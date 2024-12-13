@@ -716,7 +716,13 @@ h3 {
     font-weight: bolder;
     color: #12e6ab;
 }
-
+/* Style for bullet alignment */
+.bullet {
+    font-size: 14px; /* Adjust the size of the bullet */
+    vertical-align: middle; /* Aligns the bullet vertically with text */
+    line-height: 1; /* Ensures the bullet and text are on the same line */
+    margin-left: 5px; /* Adds some space between the bullet and text */
+}
 #messages {
     -moz-backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
