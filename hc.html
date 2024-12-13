@@ -1,0 +1,60 @@
+<html lang="en">
+    <body>
+        <div style="float: left">
+            <b class="text">Visits:</b><br />
+            <b class="text">Uniq. Visitors:</b><br />
+            <b class="text">On-site:</b>
+        </div>
+        <div style="position: fixed; right: 0">
+            <span class="counter green" >441300</span><br />
+            <span class="counter green" >217936</span><br />
+            <span class="counter green" >01</span><br />
+        </div>
+        <div style="position: fixed; right: 0; z-index: -1">
+            <span class="counter gray">00000000</span><br />
+            <span class="counter gray">00000000</span><br />
+            <span class="counter gray">00000000</span>
+        </div>
+
+        <style>
+            :root {
+                --font: "MS UI Gothic";
+                --font-size: 15px;
+            }
+            body {
+                background-color: black;
+                color: rgb(0, 255, 55);
+                margin: 0;
+                overflow: hidden;
+            }
+            @font-face {
+                font-family: "Digital";
+                src: url("https://dimden.dev/fonts/Digital-7.ttf?") format("truetype");
+                font-weight: normal;
+                font-style: normal;
+            }
+            .counter {
+                font-family: Digital;
+                float: right;
+                right: 0;
+                position: absolute;
+                font-size: 16px;
+            }
+            .green {
+                z-index: 5;
+            }
+            .gray {
+                z-index: -1;
+                color: #797979;
+                opacity: 0.3;
+            }
+            .text {
+                float: left;
+                font-family: var(--font), monospace;
+                font-size: var(--font-size);
+            }
+        </style>
+        
+    </body>
+
+</html>

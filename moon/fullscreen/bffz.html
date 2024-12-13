@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forever Friendship</title>
+    <style>
+        /* General body styles */
+        body {
+            background-color: black;
+            color: white;
+            text-align: center;
+            font-style: italic;
+            font-weight: 100;
+            font-size: 10vw;
+            letter-spacing: 20px;
+            line-height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        /* Text styles and animation */
+        #word {
+            opacity: 0;
+            transition: opacity 2s;
+            animation: swing 3s ease-in-out infinite;
+        }
+
+        @keyframes swing {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(10px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="word">Haffz ♡ Adrian</div>
+
+    <script>
+        const wordContainer = document.querySelector("#word");
+
+        function showNextWord() {
+            wordContainer.style.opacity = 1;
+            setTimeout(hideWord, 2500); // Show for 2.5 seconds
+        }
+
+        function hideWord() {
+            wordContainer.style.opacity = 0;
+            setTimeout(showNextWord, 2500); // Hide for 2.5 seconds, then show again
+        }
+
+        showNextWord();
+    </script>
+</body>
+
+</html>
