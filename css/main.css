@@ -249,7 +249,7 @@ textarea {
     filter: var(--letter-shadow);
 }
 #logo-n {
-    top: 16px;
+    top: 10px;
     cursor: pointer;
 }
 footer {
