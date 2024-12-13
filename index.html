@@ -178,30 +178,38 @@ e<!DOCTYPE html>
 </div>
 
 <div class="box terminal" style="margin-top: 10px;">
-    <!-- Systems status table -->
+  <!-- Systems status table -->
     <span>Systems status: <span id="system-status" class="status-ok">OK</span><br><br>
-    <table>
-        <tbody>
-            <tr id="statuses">
-                <td>
-                    <!-- Status column 1 -->
-                    <span  class="status-ok"> OK ▪ Website</span><br>
-                    <span  class="status-fail"> FAIL ▪ Debate Career</span><br>
-                    <span  class="status-ok"> OK ▪ Projects</span><br>
-                    <span><span  class="status-ok"> OK ▪ Notes</span><br>
-                </td>
-                <td>
-                    <!-- Status column 2 -->
-                    <span  class="status-ok"><span color="white"> OK </span> ▪ Website</span><br>
-                    <span  class="status-fail"> <span color="white">FAIL</span> ▪ Debate Career</span><br>
-                    <span  class="status-ok"> <span color="white"> OK </span> ▪ Projects</span><br>
-                    <span><span  class="status-ok"> <span color="white"> OK </span> ▪ Notes</span><br>
-                </td>
-             </tr>
-         </tbody>
-      </table>
-    </span>
-</div>
+<table>
+    <tbody>
+        <tr id="statuses">
+            <td>
+                <!-- Status column 1 -->
+                <span class="status-ok">OK <span class="bullet">▪</span> Website</span><br>
+                <span class="status-fail">FAIL <span class="bullet">▪</span> Debate Career</span><br>
+                <span class="status-ok">OK <span class="bullet">▪</span> Projects</span><br>
+                <span><span class="status-ok">OK <span class="bullet">▪</span> Notes</span><br>
+            </td>
+            <td>
+                <!-- Status column 2 -->
+                <span class="status-ok">OK <span class="bullet">▪</span> Website</span><br>
+                <span class="status-fail">FAIL <span class="bullet">▪</span> Debate Career</span><br>
+                <span class="status-ok">OK <span class="bullet">▪</span> Projects</span><br>
+                <span><span class="status-ok">OK <span class="bullet">▪</span> Notes</span><br>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</span>
+<style>
+/* Style for bullet alignment */
+.bullet {
+    font-size: 18px; /* Adjust the size of the bullet */
+    vertical-align: middle; /* Aligns the bullet with the text */
+    margin-left: 5px; /* Adds some space between the bullet and text */
+}
+</style>
+    
 <!-- Purple Sign -->
 <b id="hotel">THE WISE</b>
 </div>
