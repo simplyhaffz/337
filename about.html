@@ -14,7 +14,15 @@
     <link rel="stylesheet" href="css/about.css">
 </head>
 <body>
-    
+    <svg class="offscreen" width="0" height="0" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <filter id="crispify">
+                <feComponentTransfer>
+                    <feFuncA type="discrete" tableValues="0 1"/>
+                </feComponentTransfer>
+            </filter>
+        </defs>
+    </svg>
     <canvas id="bg" width="1280" height="640"></canvas>
     <div id="container">
         <br><br><br><br>
