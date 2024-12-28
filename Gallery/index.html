@@ -1,0 +1,108 @@
+<!DOCTYPE html>    
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="com.gif">
+    <title>Beyond Dreams Doors</title>
+    <style>
+        body {
+            font-family: courier;
+            background-color: #4d5054;
+        }
+
+        img {
+            box-shadow: 0px 0px 7px #fff;
+        }
+
+        img:hover {
+            border: 0;
+            box-shadow: 0 0 5px white, 0 0 7px white, 0 0 20px white;
+        }
+
+        body::before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(20, 20, 20, 0) 66%, rgba(0, 0, 0, 0.20) 33%);
+            background-size: 100% 3px;
+            z-index: 9999;
+            pointer-events: none;
+            animation: scanlines-anim 0.7s linear infinite;
+        }
+
+        @keyframes scanlines-anim {
+            0% {
+                background-position: 0px 0px;
+            }
+
+            100% {
+                background-position: 0px 9px;
+            }
+        }
+
+        @media only screen and (orientation: portrait) {
+            .navbar {
+                font-size: 0.6em;
+            }
+
+            body {
+                font-size: 32px;
+                background-color: #373a43;
+            }
+
+            a {
+                padding: 20px 30px;
+            }
+
+            input[type=text] {
+                padding: 20px;
+                font-size: 1em;
+                width: auto;
+            }
+
+            body::before {
+                background-size: 100% 4px;
+            }
+        }
+    </style>
+</head>
+
+<body oncontextmenu="return false;">
+    <center>
+        <br><br>
+        <img src="#" width='1040' height='50'><br><br><br><br>
+
+        <img src="#" style="border:darkgrey; border-style:solid; border-width:1px;" width='240' height='320'>
+        <img src="#" style="border:darkgrey; border-style:solid; border-width:1px;" width='240' height='320'>
+        <img src="#" style="border:darkgrey; border-style:solid; border-width:1px;" width='240' height='320'>
+        <img src="#" style="border:darkgrey; border-style:solid; border-width:1px;" width='240' height='320'>
+        <img src="#" style="border:darkgrey; border-style:solid; border-width:1px;" width='240' height='320'><br><br>
+        <br><br>
+
+        <img src="#" style="border:darkgrey; border-style:solid; border-width:1px;" width='240' height='320'>
+        <img src="#" style="border:darkgrey; border-style:solid; border-width:1px;" width='240' height='320'>
+        <img src="#" style="border:darkgrey; border-style:solid; border-width:1px;" width='240' height='320'>
+        <img src="#" style="border:darkgrey; border-style:solid; border-width:1px;" width='240' height='320'>
+        <img src="#" style="border:darkgrey; border-style:solid; border-width:1px;" width='240' height='320'><br><br>
+        <br><br>
+
+        <img src="#" style="border:darkgrey; border-style:solid; border-width:1px;" width='615' height='550'>
+        <img src="#" style="border:darkgrey; border-style:solid; border-width:1px;" width='615' height='550'><br><br>
+
+        <img src="#" width='440' height='320'>
+        <img src="#" width='370' height='320'>
+        <img src="#" width='400' height='320'><br><br>
+
+        <img src="#" width='380' height='320'>
+        <img src="#" width='350' height='320'>
+        <img src="#" width='470' height='320'><br><br><br><br>
+    </center>
+</body>
+
+</html>
