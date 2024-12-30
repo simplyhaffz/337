@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html>    
 <html lang="en">
 
 <head>
@@ -7,17 +7,16 @@
     <link rel="shortcut icon" type="image/x-icon" href="com.gif">
     <title>Beyond Dreams Doors</title>
     <style>
-        html,
-        body {
+        html, body {
             height: 100%;
             margin: 0;
-            overflow: auto;
+            overflow: auto; /* Enable scrolling */
         }
 
         body {
             font-family: courier;
-            background-color: #000;
-            color: white;
+            background-color: #000; /* Set background color to black */
+            color: white; /* Set text color to white for better visibility */
         }
 
         img {
@@ -39,7 +38,7 @@
             bottom: 0;
             background: linear-gradient(rgba(20, 20, 20, 0) 66%, rgba(0, 0, 0, 0.20) 33%);
             background-size: 100% 3px;
-            z-index: 1;
+            z-index: 9998; /* Adjust z-index to make sure it’s below the watermark */
             pointer-events: none;
             animation: scanlines-anim 0.7s linear infinite;
         }
@@ -61,6 +60,7 @@
 
             body {
                 font-size: 32px;
+                background-color: #000; /* Ensure background is black in portrait mode */
             }
 
             a {
@@ -78,11 +78,13 @@
             }
         }
 
+        /* Prevent image dragging */
         img {
-            -webkit-user-drag: none;
-            user-drag: none;
+            -webkit-user-drag: none; /* For WebKit browsers */
+            user-drag: none; /* For Firefox */
         }
 
+        /* Watermark text */
         body::after {
             content: 'Haffz The Queen!';
             position: fixed;
@@ -92,111 +94,99 @@
             font-size: 3rem;
             color: rgba(255, 255, 255, 0.55);
             pointer-events: none;
-            z-index: 2;
+            z-index: 9999; /* Ensure watermark is on top */
         }
 
-        /* Password overlay style */
-        .overlay {
+        /* Login overlay */
+        #loginOverlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px); /* Add blur effect */
+            background-color: rgba(0, 0, 0, 0.7);
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 9999;
+            z-index: 10000;
         }
 
-        .login-box {
-            background-color: rgba(0, 0, 0, 0.7); /* Darker background for the login box */
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.4);
-            text-align: center;
-        }
-
-        .login-box input {
+        #loginOverlay input {
             padding: 10px;
-            font-size: 1.2rem;
-            margin: 10px;
-            border: 1px solid #444;
-            border-radius: 5px;
-            width: 200px;
-            background-color: #333;
-            color: white;
+            font-size: 1.5rem;
+            margin-right: 10px;
+            border: none;
         }
 
-        .login-box button {
+        #loginOverlay button {
             padding: 10px 20px;
-            background-color: #444;
+            font-size: 1.5rem;
+            background-color: #4CAF50;
             color: white;
             border: none;
-            border-radius: 5px;
             cursor: pointer;
-            font-size: 1rem;
-        }
-
-        .login-box button:hover {
-            background-color: #666;
         }
     </style>
-
+    
     <script>
         // Disable right-click context menu
         document.addEventListener('contextmenu', event => event.preventDefault());
 
-        // Disable image dragging
-        document.addEventListener('dragstart', function(event) {
-            if (event.target.tagName === 'IMG') {
+        // Disable key combinations for developer tools
+        document.addEventListener('keydown', function(event) {
+            // Block F12, Ctrl + Shift + I, Ctrl + Shift + C, and Ctrl + U
+            if ((event.key === 'F12') || 
+                (event.ctrlKey && event.shiftKey && (event.key === 'I' || event.key === 'C')) || 
+                (event.ctrlKey && event.key === 'U')) {
                 event.preventDefault();
+                alert('Developer tools are blocked!');
             }
         });
 
+        // Detect if the devtools are opened and trigger a custom action
+        let devtoolsOpen = false;
+        setInterval(function() {
+            if (window.outerWidth - window.innerWidth > 100 || window.outerHeight - window.innerHeight > 100) {
+                devtoolsOpen = true;
+            }
+            if (devtoolsOpen) {
+                alert('Developer tools detected! Reload the page to fix.');
+                devtoolsOpen = false;
+            }
+        }, 1000);
+
+        // Disable text selection
         document.addEventListener('selectstart', function(event) {
             event.preventDefault();
         });
 
+        // Prevent printing
         window.onbeforeprint = function() {
             alert('Printing is disabled on this page.');
-            return false;
+            return false; // Prevent printing
         };
 
-        // Password check function
+        // Password login functionality
         function checkPassword() {
-            const password = document.getElementById('password').value;
-            const correctPassword = 'CuPCaKEs337'; 
-
-            if (password === correctPassword) {
-                document.getElementById('overlay').style.display = 'none'; // Hide overlay if password is correct
+            var password = document.getElementById("password").value;
+            if (password === "yourPassword") { // Replace with your own password
+                document.getElementById("loginOverlay").style.display = "none";
             } else {
-                alert('Incorrect password!');
+                alert("Incorrect password");
             }
         }
-
-        // Block Ctrl + Shift + C (developer tools)
-        document.addEventListener('keydown', function(event) {
-            if (event.ctrlKey && event.shiftKey && event.key === 'C') {
-                event.preventDefault(); // Prevent the default action for Ctrl + Shift + C
-                alert('FUCK YOU JEW');
-            }
-        });
     </script>
 </head>
 
 <body oncontextmenu="return false;">
-    <!-- Password overlay -->
-    <div class="overlay" id="overlay">
-        <div class="login-box">
-            <h2>Enter Password</h2>
+    <div id="loginOverlay">
+        <div>
+            <h2 style="color: white; font-size: 2rem; text-align: center;">Enter Password</h2>
             <input type="password" id="password" placeholder="Password" />
-            <button onclick="checkPassword()">Login</button>
+            <button onclick="checkPassword()">Submit</button>
         </div>
     </div>
 
-    <!-- Page content -->
     <center>
         <br><br>
         <p style="font-size: 20px;">Welcome to my Gallery!</p><br><br><br><br>
