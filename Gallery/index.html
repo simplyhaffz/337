@@ -92,7 +92,7 @@
             font-size: 3rem;
             color: rgba(255, 255, 255, 0.55);
             pointer-events: none;
-            z-index: 2; /* Ensure watermark is above the scanlines */
+            z-index: 2;
         }
 
         /* Password overlay style */
@@ -103,6 +103,7 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px); /* Add blur effect */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -110,7 +111,7 @@
         }
 
         .login-box {
-            background-color: #222;
+            background-color: rgba(0, 0, 0, 0.7); /* Darker background for the login box */
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.4);
@@ -144,31 +145,15 @@
     </style>
 
     <script>
+        // Disable right-click context menu
         document.addEventListener('contextmenu', event => event.preventDefault());
 
+        // Disable image dragging
         document.addEventListener('dragstart', function(event) {
             if (event.target.tagName === 'IMG') {
                 event.preventDefault();
             }
         });
-
-        let devtoolsOpen = false;
-        const element = new Image();
-        Object.defineProperty(element, 'id', {
-            get() {
-                devtoolsOpen = true;
-                alert('Developer tools are not allowed!');
-                event.preventDefault();
-            },
-        });
-        console.log(element.id);
-
-        setInterval(function() {
-            if (devtoolsOpen) {
-                alert('Developer tools detected! Reload the page if you accidentally opened them.');
-                devtoolsOpen = false;
-            }
-        }, 1000);
 
         document.addEventListener('selectstart', function(event) {
             event.preventDefault();
