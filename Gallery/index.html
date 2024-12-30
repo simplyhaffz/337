@@ -53,31 +53,6 @@
             }
         }
 
-        @media only screen and (orientation: portrait) {
-            .navbar {
-                font-size: 0.6em;
-            }
-
-            body {
-                font-size: 32px;
-                background-color: #000; /* Ensure background is black in portrait mode */
-            }
-
-            a {
-                padding: 20px 30px;
-            }
-
-            input[type=text] {
-                padding: 20px;
-                font-size: 1em;
-                width: auto;
-            }
-
-            body::before {
-                background-size: 100% 4px;
-            }
-        }
-
         /* Prevent image dragging */
         img {
             -webkit-user-drag: none; /* For WebKit browsers */
@@ -132,33 +107,53 @@
     </style>
     
     <script>
+        // Function to check for developer tools on page load
+        (function() {
+            var devtoolsOpen = false;
+            const threshold = 160; // Width of developer tools when opened
+
+            setInterval(function() {
+                if (window.outerWidth - window.innerWidth > threshold || window.outerHeight - window.innerHeight > threshold) {
+                    devtoolsOpen = true;
+                }
+                if (devtoolsOpen) {
+                    // Block access or redirect
+                    alert("Developer tools are blocked. Reload the page if accidentally opened.");
+                    window.location.href = 'about:blank'; // Redirect to a blank page to block further interaction
+                }
+            }, 1000); // Check every second
+        })();
+
         // Disable right-click context menu
         document.addEventListener('contextmenu', event => event.preventDefault());
 
-        // Disable key combinations for developer tools
-        document.addEventListener('keydown', function(event) {
-            // Block F12, Ctrl + Shift + I, Ctrl + Shift + C, and Ctrl + U
-            if ((event.key === 'F12') || 
-                (event.ctrlKey && event.shiftKey && (event.key === 'I' || event.key === 'C')) || 
-                (event.ctrlKey && event.key === 'U')) {
+        // Disable image dragging
+        document.addEventListener('dragstart', function(event) {
+            if (event.target.tagName === 'IMG') {
                 event.preventDefault();
-                alert('Developer tools are blocked!');
             }
         });
 
-        // Detect if the devtools are opened and trigger a custom action
+        // Detect and block developer tools
         let devtoolsOpen = false;
-        setInterval(function() {
-            if (window.outerWidth - window.innerWidth > 100 || window.outerHeight - window.innerHeight > 100) {
+        const element = new Image();
+        Object.defineProperty(element, 'id', {
+            get() {
                 devtoolsOpen = true;
-            }
+                alert('Developer tools are not allowed!');
+                event.preventDefault();
+            },
+        });
+        console.log(element.id);
+
+        setInterval(function() {
             if (devtoolsOpen) {
-                alert('Developer tools detected! Reload the page to fix.');
+                alert('Developer tools detected! Reload the page if you accidentally opened them.');
                 devtoolsOpen = false;
             }
         }, 1000);
 
-        // Disable text selection
+        // Prevent text selection
         document.addEventListener('selectstart', function(event) {
             event.preventDefault();
         });
@@ -172,7 +167,7 @@
         // Password login functionality
         function checkPassword() {
             var password = document.getElementById("password").value;
-            if (password === "yourPassword") { // Replace with your own password
+            if (password === "CuPCaKEs337") { // Replace with your own password
                 document.getElementById("loginOverlay").style.display = "none";
             } else {
                 alert("Incorrect password");
