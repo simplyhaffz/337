@@ -71,27 +71,101 @@
                 background-size: 100% 4px;
             }
         }
+
+        /* Prevent image dragging */
+        img {
+            -webkit-user-drag: none; /* For WebKit browsers */
+            user-drag: none; /* For Firefox */
+        }
+
+        /* Overlay to discourage screenshots */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* Watermark text */
+        body::before {
+            content: 'Your Custom Watermark';
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.15);
+            pointer-events: none;
+            z-index: 9999;
+        }
     </style>
+    
+    <script>
+        // Disable right-click context menu
+        document.addEventListener('contextmenu', event => event.preventDefault());
+
+        // Disable image dragging
+        document.addEventListener('dragstart', function(event) {
+            if (event.target.tagName === 'IMG') {
+                event.preventDefault();
+            }
+        });
+
+        // Detect and block developer tools
+        let devtoolsOpen = false;
+        const element = new Image();
+        Object.defineProperty(element, 'id', {
+            get() {
+                devtoolsOpen = true;
+                alert('Developer tools are not allowed!');
+                event.preventDefault();
+            },
+        });
+        console.log(element.id);
+
+        setInterval(function() {
+            if (devtoolsOpen) {
+                alert('Developer tools detected! Reload the page if you accidentally opened them.');
+                devtoolsOpen = false;
+            }
+        }, 1000);
+
+        // Prevent text selection
+        document.addEventListener('selectstart', function(event) {
+            event.preventDefault();
+        });
+
+        // Prevent printing
+        window.onbeforeprint = function() {
+            alert('Printing is disabled on this page.');
+            return false; // Prevent printing
+        };
+    </script>
 </head>
 
 <body oncontextmenu="return false;">
     <center>
         <br><br>
-        <p style="font-size: 20px;">Weclome to my Gallery!</p><br><br><br><br>
+        <p style="font-size: 20px;">Welcome to my Gallery!</p><br><br><br><br>
 
-<img src="Gallery/images/dln1" style="border:darkgrey; border-style:solid; border-width:1px;" width="240" height="300">
-<img src="Gallery/images/dln2" style="border:darkgrey; border-style:solid; border-width:1px;" width="240" height="300">
-<img src="Gallery/images/dln3" style="border:darkgrey; border-style:solid; border-width:1px;" width="240" height="300">
-<img src="Gallery/images/dln4" style="border:darkgrey; border-style:solid; border-width:1px;" width="240" height="300">
-<img src="Gallery/images/dln5" style="border:darkgrey; border-style:solid; border-width:1px;" width="240" height="300"><br><br>
-<br><br>
+        <img src="https://simplyhaffz.github.io/337/Gallery/images/dln1.jpg" style="border:darkgrey; border-style:solid; border-width:1px;" width="240" height="300">
+        <img src="https://simplyhaffz.github.io/337/Gallery/images/dln2.jpg" style="border:darkgrey; border-style:solid; border-width:1px;" width="240" height="300">
+        <img src="https://simplyhaffz.github.io/337/Gallery/images/dln3.jpg" style="border:darkgrey; border-style:solid; border-width:1px;" width="240" height="300">
+        <img src="https://simplyhaffz.github.io/337/Gallery/images/dln4.jpg" style="border:darkgrey; border-style:solid; border-width:1px;" width="240" height="300">
+        <img src="https://simplyhaffz.github.io/337/Gallery/images/dln5" style="border:darkgrey; border-style:solid; border-width:1px;" width="240.jpg" height="300"><br><br>
+        <br><br>
 
-<img src="#" style="border:darkgrey; border-style:solid; border-width:1px;" width="240" height="300">
-<img src="#" style="border:darkgrey; border-style:solid; border-width:1px;" width="240" height="300">
-<img src="#" style="border:darkgrey; border-style:solid; border-width:1px;" width="240" height="300">
-<img src="#" style="border:darkgrey; border-style:solid; border-width:1px;" width="240" height="300">
-<img src="#" style="border:darkgrey; border-style:solid; border-width:1px;" width="240" height="300">
-<br><br>
+        <img src="#" style="border:darkgrey; border-style:solid; border-width:1px;" width="240" height="300">
+        <img src="#" style="border:darkgrey; border-style:solid; border-width:1px;" width="240" height="300">
+        <img src="#" style="border:darkgrey; border-style:solid; border-width:1px;" width="240" height="300">
+        <img src="#" style="border:darkgrey; border-style:solid; border-width:1px;" width="240" height="300">
+        <img src="#" style="border:darkgrey; border-style:solid; border-width:1px;" width="240" height="300">
+        <br><br>
         <br><br>
 
         <img src="#" style="border:darkgrey; border-style:solid; border-width:1px;" width='615' height='550'>
