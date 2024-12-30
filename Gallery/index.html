@@ -38,7 +38,7 @@
             bottom: 0;
             background: linear-gradient(rgba(20, 20, 20, 0) 66%, rgba(0, 0, 0, 0.20) 33%);
             background-size: 100% 3px;
-            z-index: 9999;
+            z-index: 9998; /* Adjust z-index to make sure it’s below the watermark */
             pointer-events: none;
             animation: scanlines-anim 0.7s linear infinite;
         }
@@ -84,9 +84,9 @@
             user-drag: none; /* For Firefox */
         }
 
-        /* Overlay to discourage screenshots */
+        /* Watermark text */
         body::after {
-            content: '';
+            content: 'Haffz The Queen!';
             position: fixed;
             top: 50%;
             left: 50%;
@@ -94,7 +94,7 @@
             font-size: 3rem;
             color: rgba(255, 255, 255, 0.55);
             pointer-events: none;
-            z-index: 9999;
+            z-index: 9999; /* Ensure watermark is on top */
         }
     </style>
     
