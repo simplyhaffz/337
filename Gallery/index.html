@@ -167,7 +167,7 @@
         // Password check function
         function checkPassword() {
             const password = document.getElementById('password').value;
-            const correctPassword = 'CuPCaKEs337'; // Replace with your desired password
+            const correctPassword = 'CuPCaKEs337'; 
 
             if (password === correctPassword) {
                 document.getElementById('overlay').style.display = 'none'; // Hide overlay if password is correct
@@ -175,6 +175,14 @@
                 alert('Incorrect password!');
             }
         }
+
+        // Block Ctrl + Shift + C (developer tools)
+        document.addEventListener('keydown', function(event) {
+            if (event.ctrlKey && event.shiftKey && event.key === 'C') {
+                event.preventDefault(); // Prevent the default action for Ctrl + Shift + C
+                alert('Developer tools are disabled!');
+            }
+        });
     </script>
 </head>
 
