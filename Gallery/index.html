@@ -7,6 +7,12 @@
     <link rel="shortcut icon" type="image/x-icon" href="com.gif">
     <title>Beyond Dreams Doors</title>
     <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+        }
+
         body {
             font-family: courier;
             background-color: #000; /* Set background color to black */
@@ -25,11 +31,11 @@
         body::before {
             content: "";
             display: block;
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
-            bottom: 0;
             right: 0;
+            bottom: 0;
             background: linear-gradient(rgba(20, 20, 20, 0) 66%, rgba(0, 0, 0, 0.20) 33%);
             background-size: 100% 3px;
             z-index: 9999;
@@ -92,7 +98,7 @@
         }
 
         /* Watermark text */
-        body::before {
+        body::after {
             content: 'Haffz The Queen!';
             position: fixed;
             top: 50%;
