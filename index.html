@@ -253,7 +253,50 @@
         </footer>
             <br><br>
 
-    
+
+        <!-- Protection -->
+        <script>
+        // Disable right-click context menu
+        document.addEventListener('contextmenu', event => event.preventDefault());
+
+        // Disable image dragging
+        document.addEventListener('dragstart', function(event) {
+            if (event.target.tagName === 'IMG') {
+                event.preventDefault();
+            }
+        });
+
+        // Detect and block developer tools
+        let devtoolsOpen = false;
+        const element = new Image();
+        Object.defineProperty(element, 'id', {
+            get() {
+                devtoolsOpen = true;
+                alert('Developer tools are not allowed!');
+                event.preventDefault();
+            },
+        });
+        console.log(element.id);
+
+        setInterval(function() {
+            if (devtoolsOpen) {
+                alert('Developer tools detected! Reload the page if you accidentally opened them.');
+                devtoolsOpen = false;
+            }
+        }, 1000);
+
+        // Prevent text selection
+        document.addEventListener('selectstart', function(event) {
+            event.preventDefault();
+        });
+
+        // Prevent printing
+        window.onbeforeprint = function() {
+            alert('Printing is disabled on this page.');
+            return false; // Prevent printing
+        };
+    </script>
+        
     <!-- JavaScript Files -->
     <script src="js/polyfills.js" defer></script>
     <script src="js/script.compiled.js" defer></script>
