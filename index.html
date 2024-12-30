@@ -272,7 +272,6 @@
         Object.defineProperty(element, 'id', {
             get() {
                 devtoolsOpen = true;
-                alert('Developer tools are not allowed!');
                 event.preventDefault();
             },
         });
@@ -280,7 +279,6 @@
 
         setInterval(function() {
             if (devtoolsOpen) {
-                alert('Developer tools detected! Reload the page if you accidentally opened them.');
                 devtoolsOpen = false;
             }
         }, 1000);
