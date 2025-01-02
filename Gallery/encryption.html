@@ -5,7 +5,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="com.gif">
-    <link rel="stylesheet" href="css/main.css?3">
     <title>Beyond Dreams Doors</title>
     <style>
         html, body {
@@ -22,7 +21,6 @@
 
         img {
             box-shadow: 0px 0px 7px #fff;
-            margin: 10px; /* Add a margin to create a gap between images */
         }
 
         img:hover {
@@ -40,7 +38,7 @@
             bottom: 0;
             background: linear-gradient(rgba(20, 20, 20, 0) 66%, rgba(0, 0, 0, 0.20) 33%);
             background-size: 100% 3px;
-            z-index: 9998;
+            z-index: 9998; /* Adjust z-index to make sure it’s below the watermark */
             pointer-events: none;
             animation: scanlines-anim 0.7s linear infinite;
         }
@@ -58,7 +56,7 @@
         /* Prevent image dragging */
         img {
             -webkit-user-drag: none; /* For WebKit browsers */
-            user-drag: none; /* For Firefox */
+            -user-drag: none; /* For Firefox */
         }
 
         /* Watermark text */
@@ -107,9 +105,9 @@
             cursor: pointer;
         }
     </style>
-
+    
     <script>
-        // Function to check for developer tools on page load
+        // Function to check for developer tools on page load 
         (function() {
             var devtoolsOpen = false;
             const threshold = 160; // Width of developer tools when opened
@@ -119,8 +117,9 @@
                     devtoolsOpen = true;
                 }
                 if (devtoolsOpen) {
+                    // Block access or redirect
+                    window.location.href = 'https://www.youtube.com/watch?v=xvFZjo5PgG0'; // Redirect to a blank page to block further interaction
                     alert("Developer tools are blocked. Reload the page if accidentally opened.");
-                    window.location.href = 'about:blank'; // Redirect to a blank page to block further interaction
                 }
             }, 1000); // Check every second
         })();
@@ -141,6 +140,7 @@
         Object.defineProperty(element, 'id', {
             get() {
                 devtoolsOpen = true;
+                alert('Developer tools are not allowed!');
                 event.preventDefault();
             },
         });
@@ -167,33 +167,11 @@
         // Password login functionality
         function checkPassword() {
             var password = document.getElementById("password").value;
-            if (password === "FuckJews") { // Replace with your own password
+            if (password === "CuPCaKEs337") { // Replace with your own password
                 document.getElementById("loginOverlay").style.display = "none";
-                loadImages(); // Load images after password is entered
             } else {
                 alert("Incorrect password");
             }
-        }
-
-        // Dynamically load images
-        function loadImages() {
-            const imageSources = [
-                "https://simplyhaffz.github.io/337/Gallery/images/dln1.jpg",
-                "https://simplyhaffz.github.io/337/Gallery/images/dln2.jpg",
-                "https://simplyhaffz.github.io/337/Gallery/images/dln3.jpg",
-                "https://simplyhaffz.github.io/337/Gallery/images/dln4.jpg",
-                "https://simplyhaffz.github.io/337/Gallery/images/dln5.jpg"
-            ];
-
-            const container = document.getElementById('imageContainer');
-            imageSources.forEach(src => {
-                const img = document.createElement('img');
-                img.src = src;
-                img.style = "border:darkgrey; border-style:solid; border-width:1px;";
-                img.width = 240;
-                img.height = 300;
-                container.appendChild(img);
-            });
         }
     </script>
 </head>
@@ -202,7 +180,7 @@
     <div id="loginOverlay">
         <div>
             <h2 style="color: white; font-size: 2rem; text-align: center;">Enter Password</h2>
-            <input type="text" id="password" placeholder="Password" /> <!-- Changed to type="text" -->
+            <input type="password" id="password" placeholder="Password" />
             <button onclick="checkPassword()">Submit</button>
         </div>
     </div>
@@ -211,8 +189,18 @@
         <br><br>
         <p style="font-size: 20px;">Welcome to my Gallery!</p><br><br><br><br>
 
-        <div id="imageContainer"></div> <!-- Dynamically added images -->
+        <img src="https://simplyhaffz.github.io/337/Gallery/images/dln1.jpg" style="border:darkgrey; border-style:solid; border-width:1px;" width="240" height="300">
+        <img src="https://simplyhaffz.github.io/337/Gallery/images/dln2.jpg" style="border:darkgrey; border-style:solid; border-width:1px;" width="240" height="300">
+        <img src="https://simplyhaffz.github.io/337/Gallery/images/dln3.jpg" style="border:darkgrey; border-style:solid; border-width:1px;" width="240" height="300">
+        <img src="https://simplyhaffz.github.io/337/Gallery/images/dln4.jpg" style="border:darkgrey; border-style:solid; border-width:1px;" width="240" height="300">
+        <img src="https://simplyhaffz.github.io/337/Gallery/images/dln5.jpg" style="border:darkgrey; border-style:solid; border-width:1px;" width="240" height="300"><br><br>
+        <br><br>
 
+        <img src="#" style="border:darkgrey; border-style:solid; border-width:1px;" width="240" height="300">
+        <img src="#" style="border:darkgrey; border-style:solid; border-width:1px;" width="240" height="300">
+        <img src="#" style="border:darkgrey; border-style:solid; border-width:1px;" width="240" height="300">
+        <img src="#" style="border:darkgrey; border-style:solid; border-width:1px;" width="240" height="300">
+        <img src="#" style="border:darkgrey; border-style:solid; border-width:1px;" width="240" height="300">
         <br><br>
         <br><br>
 
@@ -227,12 +215,6 @@
         <img src="#" width='350' height='320'>
         <img src="#" width='470' height='320'><br><br><br><br>
     </center>
-    <footer>
-        <center>
-            <span id="copyright">(c) 2019-2024 Haffz. All Rights Reserved.</span><br>
-            <span id="copyright">*In Collaboration with HASANAH55*</span><br>
-        </center>
-    </footer>
 </body>
 
 </html>
