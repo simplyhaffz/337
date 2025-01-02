@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encrypt URLs</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+</head>
+<body>
+    <h2>Encrypt Image URLs</h2>
+    <textarea id="imageUrls" rows="5" cols="50" placeholder="Enter image URLs (one per line)"></textarea><br>
+    <input type="password" id="password" placeholder="Enter encryption password"><br>
+    <button onclick="encryptUrls()">Encrypt</button>
+
+    <h3>Encrypted Strings:</h3>
+    <textarea id="output" rows="10" cols="50" readonly></textarea>
+
+    <script>
+        function encryptUrls() {
+            const urls = document.getElementById('imageUrls').value.split('\n').filter(Boolean);
+            const password = document.getElementById('password').value;
+
+            if (!password) {
+                alert('Please enter an encryption password.');
+                return;
+            }
+
+            const encryptedUrls = urls.map(url => CryptoJS.AES.encrypt(url, password).toString());
+            document.getElementById('output').value = encryptedUrls.join('\n');
+        }
+    </script>
+</body>
+</html>
