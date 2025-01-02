@@ -129,6 +129,12 @@
             margin: 20px 0;
         }
 
+        .secondRowContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
         .singleImageRow {
             display: flex;
             justify-content: center;
@@ -191,6 +197,8 @@
             ];
 
             var container = document.getElementById("imageContainer");
+            var secondRow = document.getElementById("secondRowContainer");
+            var thirdRow = document.getElementById("singleImageRow");
 
             images.forEach(function(imageData, index) {
                 var img = document.createElement("img");
@@ -203,7 +211,13 @@
                     img.classList.add(imageData.class);
                 }
 
-                container.appendChild(img);
+                if (index < 5) {
+                    container.appendChild(img);  // First row, 5 images
+                } else if (index < 7) {
+                    secondRow.appendChild(img);  // Second row, large images
+                } else {
+                    thirdRow.appendChild(img);  // Third row, one image (dln8)
+                }
             });
         }
 
@@ -224,11 +238,11 @@
         Welcome to the Beyond Dreams Doors Gallery!
     </div>
 
-    <div id="imageContainer"></div>
-    
-    <div id="secondRowContainer" style="display: flex; justify-content: space-between; margin-top: 20px;"></div>
-    
-    <div id="singleRowContainer" class="singleImageRow"></div>
+    <div id="imageContainer"></div> <!-- First row of 5 images -->
+
+    <div id="secondRowContainer" class="secondRowContainer"></div> <!-- Second row of dln6 and dln7 -->
+
+    <div id="singleImageRow" class="singleImageRow"></div> <!-- Third row with dln8 -->
 
     <footer>
         <center>
