@@ -129,6 +129,11 @@
             margin: 20px 0;
         }
 
+        .singleImageRow {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
     </style>
 
     <script>
@@ -181,12 +186,13 @@
                 { src: "https://simplyhaffz.github.io/337/Gallery/images/dln4.jpg", width: 240, height: 300 },
                 { src: "https://simplyhaffz.github.io/337/Gallery/images/dln5.jpg", width: 240, height: 300 },
                 { src: "https://simplyhaffz.github.io/337/Gallery/images/dln6.jpg", class: "largeImage" },
-                { src: "https://simplyhaffz.github.io/337/Gallery/images/dln7.jpg", class: "largeImage" }
+                { src: "https://simplyhaffz.github.io/337/Gallery/images/dln7.jpg", class: "largeImage" },
+                { src: "https://simplyhaffz.github.io/337/Gallery/images/dln8.jpg", width: 240, height: 300 }
             ];
 
             var container = document.getElementById("imageContainer");
 
-            images.forEach(function(imageData) {
+            images.forEach(function(imageData, index) {
                 var img = document.createElement("img");
                 img.src = imageData.src;
                 if (imageData.width && imageData.height) {
@@ -196,7 +202,16 @@
                 if (imageData.class) {
                     img.classList.add(imageData.class);
                 }
-                container.appendChild(img);
+
+                if (index < 5) {
+                    container.appendChild(img);
+                } else if (index === 5 || index === 6) {
+                    var secondRowContainer = document.getElementById("secondRowContainer");
+                    secondRowContainer.appendChild(img);
+                } else {
+                    var singleRowContainer = document.getElementById("singleRowContainer");
+                    singleRowContainer.appendChild(img);
+                }
             });
         }
 
@@ -218,6 +233,10 @@
     </div>
 
     <div id="imageContainer"></div>
+    
+    <div id="secondRowContainer" style="display: flex; justify-content: space-between; margin-top: 20px;"></div>
+    
+    <div id="singleRowContainer" class="singleImageRow"></div>
 
     <footer>
         <center>
