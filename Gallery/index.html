@@ -11,13 +11,13 @@
         html, body {
             height: 100%;
             margin: 0;
-            overflow: auto;
+            overflow: auto; /* Enable scrolling */
         }
 
         body {
             font-family: courier;
-            background-color: #000;
-            color: white;
+            background-color: #000; /* Set background color to black */
+            color: white; /* Set text color to white for better visibility */
         }
 
         img {
@@ -54,11 +54,13 @@
             }
         }
 
+        /* Prevent image dragging */
         img {
             -webkit-user-drag: none;
             user-drag: none;
         }
 
+        /* Watermark text */
         body::after {
             content: 'Haffz The Queen!';
             position: fixed;
@@ -71,6 +73,7 @@
             z-index: 9999;
         }
 
+        /* Login overlay */
         #loginOverlay {
             position: fixed;
             top: 0;
@@ -102,130 +105,56 @@
             border: none;
             cursor: pointer;
         }
-
-        #imageContainer {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr); /* 5 images per row */
-            gap: 20px;
-            margin: 0 10%; /* Equal padding on left and right */
-            justify-content: center;
-        }
-
-        #imageContainer img {
-            border: darkgrey solid 1px;
-            max-width: 100%;
-            height: auto;
-        }
-
-        .largeImage {
-            width: 615px;
-            height: 550px;
-        }
-
-        #welcomeMessage {
-            text-align: center;
-            font-size: 2.5rem;
-            color: white;
-            margin: 20px 0;
-        }
-
-        .secondRowContainer {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        .secondRowContainer img {
-            margin-right: 20px; /* Add a gap between dln6 and dln7 */
-        }
-
-        .singleImageRow {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
     </style>
 
     <script>
+        // Function to check for developer tools on page load
         (function() {
             var devtoolsOpen = false;
-            const threshold = 160; 
+            const threshold = 160; // Width of developer tools when opened
 
             setInterval(function() {
                 if (window.outerWidth - window.innerWidth > threshold || window.outerHeight - window.innerHeight > threshold) {
                     devtoolsOpen = true;
                 }
                 if (devtoolsOpen) {
+                    // Block access or redirect
                     alert("Developer tools are blocked. Reload the page if accidentally opened.");
-                    window.location.href = 'about:blank'; 
+                    window.location.href = 'about:blank'; // Redirect to a blank page to block further interaction
                 }
-            }, 1000);
+            }, 1000); // Check every second
         })();
 
+        // Disable right-click context menu
         document.addEventListener('contextmenu', event => event.preventDefault());
 
+        // Disable image dragging
         document.addEventListener('dragstart', function(event) {
             if (event.target.tagName === 'IMG') {
                 event.preventDefault();
             }
         });
 
+        // Prevent text selection
         document.addEventListener('selectstart', function(event) {
             event.preventDefault();
         });
 
+        // Prevent printing
         window.onbeforeprint = function() {
             alert('Printing is disabled on this page.');
-            return false; 
+            return false; // Prevent printing
         };
 
+        // Password login functionality
         function checkPassword() {
             var password = document.getElementById("password").value;
-            if (password === ".") {
+            if (password === ".") { // Replace with your own password
                 document.getElementById("loginOverlay").style.display = "none";
             } else {
                 alert("Incorrect password");
             }
         }
-
-        function loadImages() {
-            var images = [
-                { src: "https://simplyhaffz.github.io/337/Gallery/images/dln1.jpg", width: 240, height: 300 },
-                { src: "https://simplyhaffz.github.io/337/Gallery/images/dln2.jpg", width: 240, height: 300 },
-                { src: "https://simplyhaffz.github.io/337/Gallery/images/dln3.jpg", width: 240, height: 300 },
-                { src: "https://simplyhaffz.github.io/337/Gallery/images/dln4.jpg", width: 240, height: 300 },
-                { src: "https://simplyhaffz.github.io/337/Gallery/images/dln5.jpg", width: 240, height: 300 },
-                { src: "https://simplyhaffz.github.io/337/Gallery/images/dln6.jpg", class: "largeImage" },
-                { src: "https://simplyhaffz.github.io/337/Gallery/images/dln7.jpg", class: "largeImage" },
-                { src: "https://simplyhaffz.github.io/337/Gallery/images/dln8.jpg", width: 240, height: 300 }
-            ];
-
-            var container = document.getElementById("imageContainer");
-            var secondRow = document.getElementById("secondRowContainer");
-            var thirdRow = document.getElementById("singleImageRow");
-
-            images.forEach(function(imageData, index) {
-                var img = document.createElement("img");
-                img.src = imageData.src;
-                if (imageData.width && imageData.height) {
-                    img.width = imageData.width;
-                    img.height = imageData.height;
-                }
-                if (imageData.class) {
-                    img.classList.add(imageData.class);
-                }
-
-                if (index < 5) {
-                    container.appendChild(img);  // First row, 5 images
-                } else if (index < 7) {
-                    secondRow.appendChild(img);  // Second row, large images
-                } else {
-                    thirdRow.appendChild(img);  // Third row, one image (dln8)
-                }
-            });
-        }
-
-        window.onload = loadImages;
     </script>
 </head>
 
@@ -238,15 +167,29 @@
         </div>
     </div>
 
-    <div id="welcomeMessage">
-        Welcome to the Beyond Dreams Doors Gallery!
-    </div>
+    <center>
+        <p style="font-size: 20px;">Welcome to my Gallery!</p>
 
-    <div id="imageContainer"></div> <!-- First row of 5 images -->
+        <div style="display: flex; justify-content: space-between; margin: 10px 5px;">
+            <!-- First row -->
+            <img src="https://simplyhaffz.github.io/337/Gallery/images/dln1.jpg" style="border:darkgrey; border-style:solid; border-width:1px;" width="240" height="300">
+            <img src="https://simplyhaffz.github.io/337/Gallery/images/dln2.jpg" style="border:darkgrey; border-style:solid; border-width:1px;" width="240" height="300">
+            <img src="https://simplyhaffz.github.io/337/Gallery/images/dln3.jpg" style="border:darkgrey; border-style:solid; border-width:1px;" width="240" height="300">
+        </div>
 
-    <div id="secondRowContainer" class="secondRowContainer"></div> <!-- Second row of dln6 and dln7 -->
+        <div style="display: flex; justify-content: space-between; margin: 10px 5px;">
+            <!-- Second row -->
+            <img src="https://simplyhaffz.github.io/337/Gallery/images/dln6.jpg" style="border:darkgrey; border-style:solid; border-width:1px;" width="615" height="550">
+            <img src="https://simplyhaffz.github.io/337/Gallery/images/dln7.jpg" style="border:darkgrey; border-style:solid; border-width:1px;" width="615" height="550">
+        </div>
 
-    <div id="singleImageRow" class="singleImageRow"></div> <!-- Third row with dln8 -->
+        <div style="display: flex; justify-content: space-between; margin: 10px 5px;">
+            <!-- Third row with 3 new images -->
+            <img src="https://simplyhaffz.github.io/337/Gallery/images/dln8.jpg" style="border:darkgrey; border-style:solid; border-width:1px;" width="615" height="550">
+            <img src="https://simplyhaffz.github.io/337/Gallery/images/dln9.jpg" style="border:darkgrey; border-style:solid; border-width:1px;" width="615" height="550">
+            <img src="https://simplyhaffz.github.io/337/Gallery/images/dln10.jpg" style="border:darkgrey; border-style:solid; border-width:1px;" width="615" height="550">
+        </div>
+    </center>
 
     <footer>
         <center>
