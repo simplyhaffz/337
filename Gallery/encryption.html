@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="com.gif">
     <link rel="stylesheet" href="css/main.css?3">
-    <title>Beyond Dreams Doors</title>
+    <title>Beyond Dreams</title>
     <style>
         html, body {
             height: 100%;
@@ -168,13 +168,14 @@
             var password = document.getElementById("password").value;
             if (password === "CuPCaKEs337") { // Replace with your own password
                 document.getElementById("loginOverlay").style.display = "none";
+                loadImages(); // Load images after password is entered
             } else {
                 alert("Incorrect password");
             }
         }
 
         // Dynamically load images
-        window.onload = function() {
+        function loadImages() {
             const imageSources = [
                 "https://simplyhaffz.github.io/337/Gallery/images/dln1.jpg",
                 "https://simplyhaffz.github.io/337/Gallery/images/dln2.jpg",
@@ -192,7 +193,7 @@
                 img.height = 300;
                 container.appendChild(img);
             });
-        };
+        }
     </script>
 </head>
 
@@ -211,14 +212,6 @@
 
         <div id="imageContainer"></div>
 
-        <br><br>
-        <br><br>
-
-        <img src="#" style="border:darkgrey; border-style:solid; border-width:1px;" width="240" height="300">
-        <img src="#" style="border:darkgrey; border-style:solid; border-width:1px;" width="240" height="300">
-        <img src="#" style="border:darkgrey; border-style:solid; border-width:1px;" width="240" height="300">
-        <img src="#" style="border:darkgrey; border-style:solid; border-width:1px;" width="240" height="300">
-        <img src="#" style="border:darkgrey; border-style:solid; border-width:1px;" width="240" height="300">
         <br><br>
         <br><br>
 
