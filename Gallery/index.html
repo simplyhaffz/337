@@ -9,128 +9,106 @@
     <title>Beyond The Dreams</title>
 
     <style>
-    /* General page layout */
-    html, body {
-        height: 100%;
-        margin: 0;
-        overflow: auto; /* Enable scrolling */
-    }
-
-    body {
-        font-family: courier;
-        background-color: #000; /* Set background color to black */
-        color: white; /* Set text color to white for better visibility */
-    }
-
-    img {
-        box-shadow: 0px 0px 7px #fff; /* Add a glow effect around images */
-        width: 240px; /* Fixed width */
-        height: 300px; /* Fixed height */
-    }
-
-    img:hover {
-        border: 0;
-        box-shadow: 0 0 5px white, 0 0 7px white, 0 0 20px white; /* Enhance the glow on hover */
-    }
-
-    /* Scanline effect for the background */
-    body::before {
-        content: "";
-        display: block;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(rgba(20, 20, 20, 0) 66%, rgba(0, 0, 0, 0.20) 33%);
-        background-size: 100% 3px;
-        z-index: 9998;
-        pointer-events: none;
-        animation: scanlines-anim 0.7s linear infinite;
-    }
-
-    /* Scanline animation keyframes */
-    @keyframes scanlines-anim {
-        0% {
-            background-position: 0px 0px;
+        /* General page layout */
+        html, body {
+            height: 100%;
+            margin: 0;
+            overflow: auto; /* Enable scrolling */
         }
-        100% {
-            background-position: 0px 9px;
+
+        body {
+            font-family: courier;
+            background-color: #000; /* Set background color to black */
+            color: white; /* Set text color to white for better visibility */
         }
-    }
 
-    /* Prevent image dragging */
-    img {
-        -webkit-user-drag: none;
-        user-drag: none;
-    }
-
-    /* Watermark text */
-    body::after {
-        content: 'Haffz The Queen!';
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 3rem;
-        color: rgba(255, 255, 255, 0.55);
-        pointer-events: none;
-        z-index: 9999;
-    }
-
-    /* Login overlay styling */
-    #loginOverlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.8);
-        backdrop-filter: blur(10px);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 10000;
-    }
-
-    #loginOverlay input {
-        padding: 10px;
-        font-size: 1.5rem;
-        margin-right: 10px;
-        border: 1px solid #fff;
-        background-color: rgba(255, 255, 255, 0.1);
-        color: white;
-    }
-
-    #loginOverlay button {
-        padding: 10px 20px;
-        font-size: 1.5rem;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        cursor: pointer;
-    }
-
-    /* Media query for smaller screens */
-    @media only screen and (max-width: 768px) {
-        /* Adjust image size for mobile */
         img {
-            width: 100%; /* Make images responsive */
-            height: auto; /* Adjust height automatically */
+            box-shadow: 0px 0px 7px #fff; /* Add a glow effect around images */
         }
 
-        /* Adjust layout of the rows to be more stacked */
-        .container {
+        img:hover {
+            border: 0;
+            box-shadow: 0 0 5px white, 0 0 7px white, 0 0 20px white; /* Enhance the glow on hover */
+        }
+
+        /* Scanline effect for the background */
+        body::before {
+            content: "";
             display: block;
-            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(rgba(20, 20, 20, 0) 66%, rgba(0, 0, 0, 0.20) 33%);
+            background-size: 100% 3px;
+            z-index: 9998;
+            pointer-events: none;
+            animation: scanlines-anim 0.7s linear infinite;
         }
 
-        /* Make sure the watermark text doesn't overlap */
-        body::after {
-            font-size: 2rem;
+        /* Scanline animation keyframes */
+        @keyframes scanlines-anim {
+            0% {
+                background-position: 0px 0px;
+            }
+            100% {
+                background-position: 0px 9px;
+            }
         }
-    }
-</style>
+
+        /* Prevent image dragging */
+        img {
+            -webkit-user-drag: none;
+            user-drag: none;
+        }
+
+        /* Watermark text */
+        body::after {
+            content: 'Haffz The Queen!';
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.55);
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* Login overlay styling */
+        #loginOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+        }
+
+        #loginOverlay input {
+            padding: 10px;
+            font-size: 1.5rem;
+            margin-right: 10px;
+            border: 1px solid #fff;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        #loginOverlay button {
+            padding: 10px 20px;
+            font-size: 1.5rem;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
 
     <script>
     // Function to check for developer tools on page load
@@ -177,7 +155,7 @@
         if (password === "CuPCaKEs337") { // Replace with your own password
             document.getElementById("loginOverlay").style.display = "none"; // Hide the overlay
         } else {
-            alert("You are not trusted by Haffz!"); // Show alert if password is incorrect
+            alert("Incorrect password"); // Show alert if password is incorrect
         }
     }
 
@@ -207,15 +185,6 @@
         if ((e.ctrlKey && e.keyCode === 44)) {  // Print screen
             e.preventDefault();
             alert("Screenshot is blocked.");
-        }
-    });
-
-    // Block touch gestures for taking screenshots on mobile devices
-    document.addEventListener('touchstart', function(e) {
-        // Detect swipe up gesture (common in mobile for screenshots)
-        if (e.touches.length > 1) {
-            e.preventDefault();  // Prevent gesture
-            alert("Taking screenshots is blocked.");
         }
     });
 
