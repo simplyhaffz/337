@@ -2,276 +2,226 @@
 <html lang="en">
 
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="shortcut icon" type="image/x-icon" href="com.gif">
-<link rel="stylesheet" href="css/main.css?3">
-<title>Beyond The Dreams</title>
-<style>
-html, body {
-height: 100%;
-margin: 0;
-overflow: auto; /* Enable scrolling */
-}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="com.gif">
+    <link rel="stylesheet" href="css/main.css?3">
+    <title>Beyond The Dreams</title>
 
-body {
-font-family: courier;
-background-color: #000; /* Set background color to black */
-color: white; /* Set text color to white for better visibility */
-}
+    <style>
+        /* General page layout */
+        html, body {
+            height: 100%;
+            margin: 0;
+            overflow: auto; /* Enable scrolling */
+        }
 
-img {
-box-shadow: 0px 0px 7px #fff;
-}
+        body {
+            font-family: courier;
+            background-color: #000; /* Set background color to black */
+            color: white; /* Set text color to white for better visibility */
+        }
 
-img:hover {
-border: 0;
-box-shadow: 0 0 5px white, 0 0 7px white, 0 0 20px white;
-}
+        img {
+            box-shadow: 0px 0px 7px #fff; /* Add a glow effect around images */
+        }
 
-body::before {
-content: "";
-display: block;
-position: fixed;
-top: 0;
-left: 0;
-right: 0;
-bottom: 0;
-background: linear-gradient(rgba(20, 20, 20, 0) 66%, rgba(0, 0, 0, 0.20) 33%);
-background-size: 100% 3px;
-z-index: 9998;
-pointer-events: none;
-animation: scanlines-anim 0.7s linear infinite;
-}
+        img:hover {
+            border: 0;
+            box-shadow: 0 0 5px white, 0 0 7px white, 0 0 20px white; /* Enhance the glow on hover */
+        }
 
-@keyframes scanlines-anim {
-0% {
-background-position: 0px 0px;
-}
+        /* Scanline effect for the background */
+        body::before {
+            content: "";
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(rgba(20, 20, 20, 0) 66%, rgba(0, 0, 0, 0.20) 33%);
+            background-size: 100% 3px;
+            z-index: 9998;
+            pointer-events: none;
+            animation: scanlines-anim 0.7s linear infinite;
+        }
 
-100% {
-background-position: 0px 9px;
-}
-}
+        /* Scanline animation keyframes */
+        @keyframes scanlines-anim {
+            0% {
+                background-position: 0px 0px;
+            }
+            100% {
+                background-position: 0px 9px;
+            }
+        }
 
-/* Prevent image dragging */
-img {
--webkit-user-drag: none;
-user-drag: none;
-}
+        /* Prevent image dragging */
+        img {
+            -webkit-user-drag: none;
+            user-drag: none;
+        }
 
-/* Watermark text */
-body::after {
-content: 'Haffz The Queen!';
-position: fixed;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-font-size: 3rem;
-color: rgba(255, 255, 255, 0.55);
-pointer-events: none;
-z-index: 9999;
-}
+        /* Watermark text */
+        body::after {
+            content: 'Haffz The Queen!';
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.55);
+            pointer-events: none;
+            z-index: 9999;
+        }
 
-/* Login overlay */
-#loginOverlay {
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background-color: rgba(0, 0, 0, 0.8);
-backdrop-filter: blur(10px);
-display: flex;
-justify-content: center;
-align-items: center;
-z-index: 10000;
-}
+        /* Login overlay styling */
+        #loginOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+        }
 
-#loginOverlay input {
-padding: 10px;
-font-size: 1.5rem;
-margin-right: 10px;
-border: 1px solid #fff;
-background-color: rgba(255, 255, 255, 0.1);
-color: white;
-}
+        #loginOverlay input {
+            padding: 10px;
+            font-size: 1.5rem;
+            margin-right: 10px;
+            border: 1px solid #fff;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
 
-#loginOverlay button {
-padding: 10px 20px;
-font-size: 1.5rem;
-background-color: #4CAF50;
-color: white;
-border: none;
-cursor: pointer;
-}
+        #loginOverlay button {
+            padding: 10px 20px;
+            font-size: 1.5rem;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
 
-/* Mobile Version - Adjustments */
-@media screen and (max-width: 768px) {
-    /* Make images responsive */
-    img {
-        width: 100%;
-        height: auto;
-        margin-bottom: 15px;
-    }
+    <script>
+        // Function to check for developer tools on page load
+        (function() {
+            var devtoolsOpen = false;
+            const threshold = 160; // Width of developer tools when opened
 
-    /* Stack the images vertically */
-    .gallery-row {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+            setInterval(function() {
+                if (window.outerWidth - window.innerWidth > threshold || window.outerHeight - window.innerHeight > threshold) {
+                    devtoolsOpen = true;
+                }
+                if (devtoolsOpen) {
+                    // Block access or redirect
+                    alert("Developer tools are blocked. Reload the page if accidentally opened.");
+                    window.location.href = 'about:blank'; // Redirect to a blank page to block further interaction
+                }
+            }, 1000); // Check every second
+        })();
 
-    /* Adjust LOVE text */
-    #love {
-        font-size: 2rem;
-        margin: 20px 0;
-    }
+        // Disable right-click context menu
+        document.addEventListener('contextmenu', event => event.preventDefault());
 
-    /* Smaller watermark text */
-    body::after {
-        font-size: 2rem;
-    }
+        // Disable image dragging
+        document.addEventListener('dragstart', function(event) {
+            if (event.target.tagName === 'IMG') {
+                event.preventDefault();
+            }
+        });
 
-    /* Adjust margins and padding */
-    .footer {
-        font-size: 1rem;
-    }
+        // Prevent text selection
+        document.addEventListener('selectstart', function(event) {
+            event.preventDefault();
+        });
 
-    /* Adjust login overlay */
-    #loginOverlay input, #loginOverlay button {
-        width: 80%;
-    }
+        // Prevent printing
+        window.onbeforeprint = function() {
+            alert('Printing is disabled on this page.');
+            return false; // Prevent printing
+        };
 
-    .gallery-row span {
-        font-size: 2.5rem; /* Smaller font for mobile */
-    }
-}
-
-/* Desktop Version - Adjustments for larger screens */
-@media screen and (min-width: 769px) {
-    .gallery-row {
-        display: flex;
-        justify-content: space-between;
-        gap: 10px;
-    }
-
-    .footer {
-        font-size: 1.5rem;
-    }
-}
-</style>
-
-<script>
-// Function to check for developer tools on page load
-(function() {
-var devtoolsOpen = false;
-const threshold = 160; // Width of developer tools when opened
-
-setInterval(function() {
-if (window.outerWidth - window.innerWidth > threshold || window.outerHeight - window.innerHeight > threshold) {
-devtoolsOpen = true;
-}
-if (devtoolsOpen) {
-// Block access or redirect
-alert("Developer tools are blocked. Reload the page if accidentally opened.");
-window.location.href = 'about:blank'; // Redirect to a blank page to block further interaction
-}
-}, 1000); // Check every second
-})();
-
-// Disable right-click context menu
-document.addEventListener('contextmenu', event => event.preventDefault());
-
-// Disable image dragging
-document.addEventListener('dragstart', function(event) {
-if (event.target.tagName === 'IMG') {
-event.preventDefault();
-}
-});
-
-// Prevent text selection
-document.addEventListener('selectstart', function(event) {
-event.preventDefault();
-});
-
-// Prevent printing
-window.onbeforeprint = function() {
-alert('Printing is disabled on this page.');
-return false; // Prevent printing
-};
-
-// Password login functionality
-function checkPassword() {
-var password = document.getElementById("password").value;
-if (password === "CuPCaKEs337") { // Replace with your own password
-document.getElementById("loginOverlay").style.display = "none";
-} else {
-alert("Incorrect password");
-}
-}
-</script>
+        // Password login functionality
+        function checkPassword() {
+            var password = document.getElementById("password").value;
+            if (password === "CuPCaKEs337") { // Replace with your own password
+                document.getElementById("loginOverlay").style.display = "none"; // Hide the overlay
+            } else {
+                alert("Incorrect password"); // Show alert if password is incorrect
+            }
+        }
+    </script>
 </head>
 
 <body oncontextmenu="return false;">
-<div id="loginOverlay">
-<div>
-<h2 style="color: white; font-size: 2rem; text-align: center;">Enter Password</h2>
-<input type="password" id="password" placeholder="Password" />
-<button onclick="checkPassword()">Submit</button>
-</div>
-</div>
+    <!-- Login overlay for password authentication -->
+    <div id="loginOverlay">
+        <div>
+            <h2 style="color: white; font-size: 2rem; text-align: center;">Enter Password</h2>
+            <input type="password" id="password" placeholder="Password" />
+            <button onclick="checkPassword()">Submit</button>
+        </div>
+    </div>
 
-<center>
-<p style="font-size: 20px;">Welcome to my Gallery!</p>
+    <center>
+        <p style="font-size: 20px;">Welcome to my Gallery!</p>
 
-<!-- First row -->
-<div class="gallery-row">
-<img src="https://simplyhaffz.github.io/337/Gallery/images/dln1.jpg" style="border:darkgrey; border-style:solid; border-width:1px;">
-<img src="https://simplyhaffz.github.io/337/Gallery/images/dln2.jpg" style="border:darkgrey; border-style:solid; border-width:1px;">
-<img src="https://simplyhaffz.github.io/337/Gallery/images/dln3.jpg" style="border:darkgrey; border-style:solid; border-width:1px;">
-<img src="https://simplyhaffz.github.io/337/Gallery/images/dln4.jpg" style="border:darkgrey; border-style:solid; border-width:1px;">
-<img src="https://simplyhaffz.github.io/337/Gallery/images/dln5.jpg" style="border:darkgrey; border-style:solid; border-width:1px;">
-</div>
+        <!-- First row of images -->
+        <div style="display: flex; justify-content: space-between; margin: 10px 5px;">
+            <img src="https://simplyhaffz.github.io/337/Gallery/images/dln1.jpg" style="border:darkgrey; border-style:solid; border-width:1px;" width="240" height="300">
+            <img src="https://simplyhaffz.github.io/337/Gallery/images/dln2.jpg" style="border:darkgrey; border-style:solid; border-width:1px;" width="240" height="300">
+            <img src="https://simplyhaffz.github.io/337/Gallery/images/dln3.jpg" style="border:darkgrey; border-style:solid; border-width:1px;" width="240" height="300">
+            <img src="https://simplyhaffz.github.io/337/Gallery/images/dln4.jpg" style="border:darkgrey; border-style:solid; border-width:1px;" width="240" height="300">
+            <img src="https://simplyhaffz.github.io/337/Gallery/images/dln5.jpg" style="border:darkgrey; border-style:solid; border-width:1px;" width="240" height="300">
+        </div>
 
-<!-- Second row -->
-<div class="gallery-row" style="gap: 10px;">
-<img src="https://simplyhaffz.github.io/337/Gallery/images/dln6.jpg" style="border: darkgrey; border-style: solid; border-width: 1px;">
-<div id="love">
-<span>L</span>
-<span>O</span>
-<span>V</span>
-<span>E</span>
-</div>
-<img src="https://simplyhaffz.github.io/337/Gallery/images/dln7.jpg" style="border: darkgrey; border-style: solid; border-width: 1px;">
-</div>
+        <!-- Second row with "LOVE" vertically placed in the middle -->
+        <div style="display: flex; justify-content: center; margin: 0 5px; gap: 10px;">
+            <img src="https://simplyhaffz.github.io/337/Gallery/images/dln6.jpg" style="border: darkgrey; border-style: solid; border-width: 1px;" width="615" height="550">
+            <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; font-size: 3rem; color: white; height: 550px;">
+                <span>L</span>
+                <span>O</span>
+                <span>V</span>
+                <span>E</span>
+            </div>
+            <img src="https://simplyhaffz.github.io/337/Gallery/images/dln7.jpg" style="border: darkgrey; border-style: solid; border-width: 1px;" width="615" height="550">
+        </div>
 
-<!-- Third row -->
-<div class="gallery-row">
-<img src="https://simplyhaffz.github.io/337/Gallery/images/dln8.jpg" style="border:darkgrey; border-style:solid; border-width:1px;">
-<img src="https://simplyhaffz.github.io/337/Gallery/images/dln9.jpg" style="border:darkgrey; border-style:solid; border-width:1px;">
-<img src="https://simplyhaffz.github.io/337/Gallery/images/dln10.jpg" style="border:darkgrey; border-style:solid; border-width:1px;">
-<img src="https://simplyhaffz.github.io/337/Gallery/images/dln11.jpg" style="border:darkgrey; border-style:solid; border-width:1px;">
-<img src="https://simplyhaffz.github.io/337/Gallery/images/dln12.jpg" style="border:darkgrey; border-style:solid; border-width:1px;">
-<img src="https://simplyhaffz.github.io/337/Gallery/images/dln13.jpg" style="border:darkgrey; border-style:solid; border-width:1px;">
-<img src="https://simplyhaffz.github.io/337/Gallery/images/dln14.jpg" style="border:darkgrey; border-style:solid; border-width:1px;">
-<img src="https://simplyhaffz.github.io/337/Gallery/images/dln15.jpg" style="border:darkgrey; border-style:solid; border-width:1px;">
-</div>
+        <!-- Third row with 8 images -->
+        <div style="display: flex; justify-content: space-between; margin: 10px 5px;">
+            <img src="https://simplyhaffz.github.io/337/Gallery/images/dln8.jpg" style="border:darkgrey; border-style:solid; border-width:1px;" width="150" height="150">
+            <img src="https://simplyhaffz.github.io/337/Gallery/images/dln9.jpg" style="border:darkgrey; border-style:solid; border-width:1px;" width="150" height="150">
+            <img src="https://simplyhaffz.github.io/337/Gallery/images/dln10.jpg" style="border:darkgrey; border-style:solid; border-width:1px;" width="150" height="150">
+            <img src="https://simplyhaffz.github.io/337/Gallery/images/dln11.jpg" style="border:darkgrey; border-style:solid; border-width:1px;" width="150" height="150">
+            <img src="https://simplyhaffz.github.io/337/Gallery/images/dln12.jpg" style="border:darkgrey; border-style:solid; border-width:1px;" width="150" height="150">
+            <img src="https://simplyhaffz.github.io/337/Gallery/images/dln13.jpg" style="border:darkgrey; border-style:solid; border-width:1px;" width="150" height="150">
+            <img src="https://simplyhaffz.github.io/337/Gallery/images/dln14.jpg" style="border:darkgrey; border-style:solid; border-width:1px;" width="150" height="150">
+            <img src="https://simplyhaffz.github.io/337/Gallery/images/dln15.jpg" style="border:darkgrey; border-style:solid; border-width:1px;" width="150" height="150">
+        </div>
 
-<!-- Fourth row -->
-<div class="gallery-row" style="gap: 10px;">
-<img src="https://simplyhaffz.github.io/337/Gallery/images/dln16.jpg" style="border:darkgrey; border-style:solid; border-width:1px;">
-<img src="https://simplyhaffz.github.io/337/Gallery/images/dln17.jpg" style="border:darkgrey; border-style:solid; border-width:1px;">
-</div>
+        <!-- Fourth row with 2 large images -->
+        <div style="display: flex; justify-content: center; margin: 10px 5px;">
+            <img src="https://simplyhaffz.github.io/337/Gallery/images/dln16.jpg" style="border:darkgrey; border-style:solid; border-width:1px; margin-right: 10px;" width="550" height="412">
+            <img src="https://simplyhaffz.github.io/337/Gallery/images/dln17.jpg" style="border:darkgrey; border-style:solid; border-width:1px;" width="550" height="412">
+        </div>
 
-</center>
+    </center>
 
-<footer>
-<center>
-<span id="copyright">(c) 2019-2024 Haffz. All Rights Reserved.</span><br>
-<span id="copyright">*In Collaboration with HASANAH55*</span><br>
-</center>
-</footer>
+    <!-- Footer section -->
+    <footer>
+        <center>
+            <span id="copyright">(c) 2019-2024 Haffz. All Rights Reserved.</span><br>
+            <span id="copyright">*In Collaboration with HASANAH55*</span><br>
+        </center>
+    </footer>
 </body>
 
 </html>
