@@ -22,6 +22,7 @@
 
         img {
             box-shadow: 0px 0px 7px #fff;
+            display: none; /* Initially hide the images */
         }
 
         img:hover {
@@ -151,6 +152,11 @@
             var password = document.getElementById("password").value;
             if (password === "CuPCaKEs337") { // Replace with your own password
                 document.getElementById("loginOverlay").style.display = "none";
+                // Show images after the correct password is entered
+                var images = document.querySelectorAll("img");
+                images.forEach(function(img) {
+                    img.style.display = "block"; // Reveal all images
+                });
             } else {
                 alert("Incorrect password");
             }
@@ -170,7 +176,7 @@
     <center>
         <p style="font-size: 20px;">Welcome to my Gallery!</p>
 
-        <div style="display: flex; justify-content: space-between; margin: 10px 5px;">
+        <div style="display: flex; justify-content: space-between; margin: 0 5px; gap: 5px;">
             <!-- First row -->
             <img src="https://simplyhaffz.github.io/337/Gallery/images/dln1.jpg" style="border:darkgrey; border-style:solid; border-width:1px;" width="240" height="300">
             <img src="https://simplyhaffz.github.io/337/Gallery/images/dln2.jpg" style="border:darkgrey; border-style:solid; border-width:1px;" width="240" height="300">
@@ -179,18 +185,9 @@
             <img src="https://simplyhaffz.github.io/337/Gallery/images/dln5.jpg" style="border:darkgrey; border-style:solid; border-width:1px;" width="240" height="300">
         </div>
 
-        <div style="display: flex; justify-content: space-between; margin: 0 5px; gap: 10px;">
+        <div style="display: flex; justify-content: space-between; margin: 0 5px; gap: 5px;">
             <!-- Second row -->
             <img src="https://simplyhaffz.github.io/337/Gallery/images/dln6.jpg" style="border: darkgrey; border-style: solid; border-width: 1px;" width="615" height="550">
-            
-            <!-- "LOVE" Word in the middle -->
-            <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; font-size: 3rem; height: 550px;">
-                <span>L</span>
-                <span>O</span>
-                <span>V</span>
-                <span>E</span>
-            </div>
-
             <img src="https://simplyhaffz.github.io/337/Gallery/images/dln7.jpg" style="border: darkgrey; border-style: solid; border-width: 1px;" width="615" height="550">
         </div>
 
@@ -206,12 +203,7 @@
             <img src="https://simplyhaffz.github.io/337/Gallery/images/dln15.jpg" style="border:darkgrey; border-style:solid; border-width:1px;" width="150" height="150">
         </div>
 
-        <div style="display: flex; justify-content: center; margin: 10px 5px;">
-            <!-- Fourth row with 2 image -->
-            <img src="https://simplyhaffz.github.io/337/Gallery/images/dln16.jpg" style="border:darkgrey; border-style:solid; border-width:1px; margin-right: 10px;" width="550" height="412">
-            <img src="https://simplyhaffz.github.io/337/Gallery/images/dln17.jpg" style="border:darkgrey; border-style:solid; border-width:1px;" width="550" height="412">
-        </div>
-
+        <!-- Additional image rows here -->
     </center>
 
     <footer>
