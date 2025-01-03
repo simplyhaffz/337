@@ -111,54 +111,132 @@
     </style>
 
     <script>
-        // Function to check for developer tools on page load
-        (function() {
-            var devtoolsOpen = false;
-            const threshold = 160; // Width of developer tools when opened
+    // Function to check for developer tools on page load
+    (function() {
+        var devtoolsOpen = false;
+        const threshold = 160; // Width of developer tools when opened
 
-            setInterval(function() {
-                if (window.outerWidth - window.innerWidth > threshold || window.outerHeight - window.innerHeight > threshold) {
-                    devtoolsOpen = true;
-                }
-                if (devtoolsOpen) {
-                    // Block access or redirect
-                    alert("Developer tools are blocked. Reload the page if accidentally opened.");
-                    window.location.href = 'about:blank'; // Redirect to a blank page to block further interaction
-                }
-            }, 1000); // Check every second
-        })();
-
-        // Disable right-click context menu
-        document.addEventListener('contextmenu', event => event.preventDefault());
-
-        // Disable image dragging
-        document.addEventListener('dragstart', function(event) {
-            if (event.target.tagName === 'IMG') {
-                event.preventDefault();
+        setInterval(function() {
+            if (window.outerWidth - window.innerWidth > threshold || window.outerHeight - window.innerHeight > threshold) {
+                devtoolsOpen = true;
             }
-        });
+            if (devtoolsOpen) {
+                // Block access or redirect
+                alert("Developer tools are blocked. Reload the page if accidentally opened.");
+                window.location.href = 'about:blank'; // Redirect to a blank page to block further interaction
+            }
+        }, 1000); // Check every second
+    })();
 
-        // Prevent text selection
-        document.addEventListener('selectstart', function(event) {
+    // Disable right-click context menu
+    document.addEventListener('contextmenu', event => event.preventDefault());
+
+    // Disable image dragging
+    document.addEventListener('dragstart', function(event) {
+        if (event.target.tagName === 'IMG') {
             event.preventDefault();
-        });
-
-        // Prevent printing
-        window.onbeforeprint = function() {
-            alert('Printing is disabled on this page.');
-            return false; // Prevent printing
-        };
-
-        // Password login functionality
-        function checkPassword() {
-            var password = document.getElementById("password").value;
-            if (password === "CuPCaKEs337") { // Replace with your own password
-                document.getElementById("loginOverlay").style.display = "none"; // Hide the overlay
-            } else {
-                alert("Incorrect password"); // Show alert if password is incorrect
-            }
         }
-    </script>
+    });
+
+    // Prevent text selection
+    document.addEventListener('selectstart', function(event) {
+        event.preventDefault();
+    });
+
+    // Prevent printing
+    window.onbeforeprint = function() {
+        alert('Printing is disabled on this page.');
+        return false; // Prevent printing
+    };
+
+    // Password login functionality
+    function checkPassword() {
+        var password = document.getElementById("password").value;
+        if (password === "CuPCaKEs337") { // Replace with your own password
+            document.getElementById("loginOverlay").style.display = "none"; // Hide the overlay
+        } else {
+            alert("Incorrect password"); // Show alert if password is incorrect
+        }
+    }
+
+    // Block common keyboard shortcuts for developer tools
+    document.addEventListener('keydown', function(e) {
+        // Ctrl + Shift + I / F12 (Inspect)
+        if ((e.ctrlKey && e.shiftKey && e.keyCode === 73) || (e.keyCode === 123)) {
+            e.preventDefault();
+            alert("Inspect element is blocked.");
+        }
+        // Ctrl + U (View source)
+        if (e.ctrlKey && e.keyCode === 85) {
+            e.preventDefault();
+            alert("Viewing source is blocked.");
+        }
+        // Ctrl + Shift + U (For Chrome/Firefox)
+        if (e.ctrlKey && e.shiftKey && e.keyCode === 85) {
+            e.preventDefault();
+            alert("Viewing source is blocked.");
+        }
+        // Ctrl + Shift + J (Developer tools in console)
+        if (e.ctrlKey && e.shiftKey && e.keyCode === 74) {
+            e.preventDefault();
+            alert("Developer tools are blocked.");
+        }
+        // Disable screenshotting shortcuts (Windows/Chrome)
+        if ((e.ctrlKey && e.keyCode === 44)) {  // Print screen
+            e.preventDefault();
+            alert("Screenshot is blocked.");
+        }
+    });
+
+    // Block touch gestures for taking screenshots on mobile devices
+    document.addEventListener('touchstart', function(e) {
+        // Detect swipe up gesture (common in mobile for screenshots)
+        if (e.touches.length > 1) {
+            e.preventDefault();  // Prevent gesture
+            alert("Taking screenshots is blocked.");
+        }
+    });
+
+    // Prevent screen recording and screenshots via the "Power + Volume Up" on Android
+    window.addEventListener('keydown', function(e) {
+        // Blocking screenshot button combinations (Android-specific)
+        if (e.key === "VolumeDown" || e.key === "VolumeUp") {
+            e.preventDefault();
+            alert("Screenshots are disabled.");
+        }
+    });
+
+    // Block gestures for screenshots in iOS (by preventing screen recording)
+    window.addEventListener('touchmove', function(e) {
+        // Prevents a screenshot gesture (iOS)
+        e.preventDefault();
+    });
+
+    // Prevent the use of the "Home" and "Power" buttons for screenshots on mobile devices
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            alert("Screenshots are disabled.");
+        }
+    });
+
+    // Block print screen (for mobile and desktop)
+    window.addEventListener('keydown', function(e) {
+        if (e.keyCode === 44 || e.key === "PrintScreen") {
+            e.preventDefault();
+            alert("Screenshot is blocked.");
+        }
+    });
+
+    // Prevent right-click screenshotting on mobile devices
+    document.addEventListener('contextmenu', function(e) {
+        if (e.target.tagName === 'IMG') {
+            e.preventDefault();  // Disable right-click on images
+            alert("Right-clicking to save images is blocked.");
+        }
+    });
+
+</script>
+
 </head>
 
 <body oncontextmenu="return false;">
