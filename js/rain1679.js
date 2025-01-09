@@ -22,7 +22,7 @@ setTimeout(() => {
             .status-ok {
                 color: #36fdf7;
             }
-            #dimdengif, #mood {
+            #haffzgif, #mood {
                 border: 1px solid rgb(41 91 124);
             }
         `;
