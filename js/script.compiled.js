@@ -1373,7 +1373,7 @@ document.getElementById("brimstone").onclick = function () {
             "brightness(0)";
           document.getElementById("buttons-sites").style.filter =
             "brightness(0)";
-          document.getElementById("dimdengif").style.filter = "brightness(0)";
+          document.getElementById("haffzgif").style.filter = "brightness(0)";
           document.getElementById("projects-banner").style.filter =
             "brightness(0)";
           document.getElementById("mewo").style.display = "none";
