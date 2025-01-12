@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quotes Hall</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Special+Elite');
+
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      font-family: 'Special Elite', cursive;
+      background: #000000; /* Background changed to black */
+      color: #ffffff; /* Text color updated to white for contrast */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.5s ease;
+    }
+
+    blockquote {
+      font-weight: 100;
+      font-size: 2rem;
+      max-width: 600px;
+      line-height: 1.4;
+      position: relative;
+      margin: 0;
+      padding: .5rem;
+      text-align: center;
+      opacity: 1;
+      transition: opacity 1s ease-out;
+    }
+
+    blockquote:before,
+    blockquote:after {
+      position: absolute;
+      color: #f1efe6;
+      font-size: 8rem;
+      width: 4rem;
+      height: 4rem;
+    }
+
+    blockquote:before {
+      content: '“';
+      left: -5rem;
+      top: -2rem;
+    }
+
+    blockquote:after {
+      content: '”';
+      right: -5rem;
+      bottom: 1rem;
+    }
+
+    cite {
+      line-height: 3;
+      text-align: left;
+      font-size: 1.5rem;
+    }
+
+    /* Style for the arrows */
+    .arrow {
+      position: absolute;
+      bottom: 20px;
+      font-size: 3rem;
+      cursor: pointer;
+      animation: fade 2s infinite alternate;
+      transition: transform 0.3s ease;
+    }
+
+    /* Right arrow position */
+    .right-arrow {
+      right: 20px;
+    }
+
+    /* Left arrow position */
+    .left-arrow {
+      left: 20px;
+    }
+
+    /* Fade animation for arrows */
+    @keyframes fade {
+      0% {
+        opacity: 0.3;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    /* Hover effect */
+    .arrow:hover {
+      transform: scale(1.2);
+    }
+  </style>
+</head>
+<body>
+
+  <blockquote id="quote">
+    The man who comes back through the door in the wall will never be quite the same as the man who went out.
+  </blockquote>
+  <cite>Aldous Huxley</cite>
+
+  <!-- Left arrow for previous quote -->
+  <span id="prevArrow" class="arrow left-arrow">&#8592;</span> <!-- Left arrow -->
+
+  <!-- Right arrow for next quote -->
+  <span id="nextArrow" class="arrow right-arrow">&#8594;</span> <!-- Right arrow -->
+
+  <script>
+    const quotes = [
+      {
+        text: "The man who comes back through the door in the wall will never be quite the same as the man who went out.",
+        author: "Aldous Huxley"
+      },
+      {
+        text: "It is not what we do, but also what we do not do, for which we are accountable.",
+        author: "Molière"
+      },
+      {
+        text: "A friend to all is a friend to none.",
+        author: "Aristotle"
+      },
+      {
+        text: "The only true wisdom is in knowing you know nothing.",
+        author: "Socrates"
+      },
+    ];
+
+    let currentQuoteIndex = 0;
+
+    function updateQuote() {
+      const quoteElement = document.getElementById('quote');
+      const citeElement = document.querySelector('cite');
+
+      // Clear the existing quote text
+      quoteElement.textContent = '';
+      citeElement.textContent = '';
+
+      // Simulate typewriter effect (revealing one character at a time)
+      let decodedText = quotes[currentQuoteIndex].text;
+      let i = 0;
+      
+      // Typewriter effect interval
+      let interval = setInterval(() => {
+        quoteElement.textContent = decodedText.substring(0, i++);
+        if (i > decodedText.length) {
+          clearInterval(interval); // Stop the typewriter effect
+        }
+      }, 60); // Adjust speed of typewriting (60ms per character)
+
+      citeElement.textContent = quotes[currentQuoteIndex].author;
+    }
+
+    // Next quote functionality
+    document.getElementById('nextArrow').addEventListener('click', () => {
+      currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
+      updateQuote();
+    });
+
+    // Previous quote functionality
+    document.getElementById('prevArrow').addEventListener('click', () => {
+      currentQuoteIndex = (currentQuoteIndex - 1 + quotes.length) % quotes.length;
+      updateQuote();
+    });
+
+    // Initialize the first quote
+    updateQuote();
+  </script>
+
+</body>
+</html>
