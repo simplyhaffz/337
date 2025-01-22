@@ -66,6 +66,16 @@
 
         .swiper-wrapper {
             display: flex; /* Use flexbox for horizontal layout */
+            animation: marquee 20s linear infinite; /* Smooth marquee animation */
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
         }
 
         .swiper-slide {
@@ -220,7 +230,7 @@
                 <div class="swiper-slide">
                     <img src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/4c5c1727-8b32-48c1-91de-b0496ccf10f6" />
                     <div class="overlay">
-                        < <a href="https://www.youtube.com/watch?v=9HDEHj2yzew&ab_channel=DuaLipa" target="_blank">
+                        <a href="https://www.youtube.com/watch?v=9HDEHj2yzew&ab_channel=DuaLipa" target="_blank">
                             <ion-icon name="logo-youtube"></ion-icon>
                         </a>
                     </div>
