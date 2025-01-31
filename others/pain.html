@@ -11,10 +11,12 @@ function insertPoemIntoDivs() {
 
 	// Insert poem into all .text divs infinitely
 	textDivs.forEach((div) => {
-		// Create a loop to append the poem multiple times
-		for (let i = 0; i < 100; i++) { // Adjust the number as needed
+		// Create a loop to append the poem continuously
+		const repeatPoem = () => {
 			div.innerHTML += kiplingPoem;
-		}
+			requestAnimationFrame(repeatPoem); // Call the function again for continuous appending
+		};
+		repeatPoem(); // Start the repeating function
 	});
 }
 
