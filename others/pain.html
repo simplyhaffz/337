@@ -97,10 +97,12 @@ body {
 	width: 1000px;
 }
 .boyImage {
-	position: relative;
-	margin-top: 100px;
-	z-index: 2;
-	animation: 200s linear infinite blur;
+    position: absolute;
+    margin-top: 105px; /* Increased from 100px to 105px */
+    width: 90%; /* Adjust this value to make the image smaller */
+    height: auto; /* Maintain aspect ratio */
+    z-index: 2;
+    animation: 200s linear infinite blur;
 }
 .content {
 	border-radius: 40px;
