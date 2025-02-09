@@ -184,6 +184,42 @@
             font-weight: 600;
             color: var(--primary);
         }
+
+        /* Responsive Styles */
+        @media (max-width: 600px) {
+            :root {
+                --card-size: 250px;
+            }
+
+            .flipper {
+                width: calc(var(--card-size) * 1.586);
+                height: var(--card-size);
+            }
+
+            .card-front img {
+                max-width: 70%;
+            }
+
+            .card-back h2 {
+                font-size: 1.25rem;
+            }
+
+            .card-number {
+                font-size: 1.25rem;
+            }
+
+            .info {
+                font-size: 0.9rem;
+            }
+
+            .signature-strip {
+                width: 90%;
+            }
+
+            .signature {
+                font-size: 0.8rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -193,24 +229,22 @@
                 <img src="https://cdn.discordapp.com/attachments/1316646050043269133/1338168114046697482/signature_2880x1920.png?ex=67aa19ac&is=67a8c82c&hm=7f22c3b382defc0c40dbc51d595bee019c516eeaf6f6084c29b5eb927b81e486&" alt="Logo">
             </div>
             <div class="card card-back">
-                    <h2>The N-Word Pass</h2>
-                    <div class="card-number">0000 0000 0000 0001</div>
-                    <div class="signature-strip" style="text-align: center; padding: 10px 0;">
-                        <span class="signature">Only given to the Worthy of all mortals</span>
-                    </div>
-                    <div class="info">
-                        <span class="label">Given by:</span> <span>Dilan S. Hancer</span> 
-                        <span class="label" style="margin-left: 30px;">Given to:</span> <span>Self</span>
-                    </div>
-                    <div class="info">
-                        <span class="label">Uses:</span>
-                        <span>Unlimited</span>
-                    </div>
-                    <div class="info">
-                        <span class="label">Validity:</span>
-                        <span>∞</span>
-                    </div>
-            </div>
+                <h2>The N-Word Pass</h2>
+                <div class="card-number">0000 0000 0000 0001</div>
+                <div class="signature-strip" style="text-align: center; padding: 10px 0;">
+                    <span class="signature">Only given to the Worthy of all mortals</span>
+                </div>
+                <div class="info">
+                    <span class="label">Given by:</span> <span>Dilan S. Hancer</span> 
+                    <span class="label" style="margin-left: 30px;">Given to:</span> <span>Self</span>
+                </div>
+                <div class="info">
+                    <span class="label">Uses:</span>
+                    <span>Unlimited</span>
+                </div>
+                <div class="info">
+                    <span class="label">Validity:</span>
+                    <span>∞</span>
                 </div>
             </div>
         </div>
