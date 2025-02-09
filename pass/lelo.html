@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lelo's Pass</title>
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        :root {
+            --background: url('https://i.pinimg.com/736x/81/75/d9/8175d9f918d984206a97471b5274e8b8.jpg');
+            --primary: #ff1ead;
+            --secondary: #1effc3;
+            --card-size: 300px;
+        }
+
+        body {
+            height: 100vh;
+            margin: 0;
+            display: grid;
+            place-items: center;
+            padding: 1rem;
+            font-family: 'Source Code Pro', monospace;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--background);
+            background-size: cover;
+            background-position: center;
+            filter: blur(8px);
+            z-index: -1;
+        }
+
+        .flip-container {
+            perspective: 1000px;
+            position: relative;
+        }
+
+        .flipper {
+            position: relative;
+            width: calc(var(--card-size) * 1.586);
+            height: var(--card-size);
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .flip-container:hover .flipper {
+            transform: rotateY(180deg);
+        }
+
+        .card {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 0.75rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            backface-visibility: hidden;
+        }
+
+        .card-front {
+            background: linear-gradient(135deg, #2e2e2e, #1a1a1a, #3d3d3d);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            will-change: transform;
+        }
+
+        .card-front::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -75%;
+            width: 50%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: skewX(-25deg);
+            transition: left 0.5s ease-in-out;
+            pointer-events: none;
+        }
+
+        .card-front:hover::before {
+            left: 125%;
+        }
+
+        .card-front img {
+            max-width: 80%;
+            height: auto;
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.6));
+        }
+
+        .card-back {
+            background: linear-gradient(135deg, #1f1f1f, #0d0d0d, #2b2b2b);
+            color: white;
+            transform: rotateY(180deg);
+            flex-direction: column;
+            padding: 20px;
+            text-align: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background-blend-mode: overlay;
+            overflow: hidden;
+        }
+
+        .card-back::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                45deg,
+                rgba(255, 255, 255, 0.03),
+                rgba(255, 255, 255, 0.03) 2px,
+                transparent 2px,
+                transparent 4px
+            ); 
+            pointer-events: none;
+        }
+
+        .card-back h2 {
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .card-number {
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            margin: 20px 0;
+            color: #ffffff;
+        }
+
+        .signature-strip {
+            background: rgba(255, 255, 255, 0.2);
+            height: 30px;
+            width: 80%;
+            margin: 10px auto;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .signature {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+            font-size: 0.9rem;
+            color: #ffffff;
+        }
+
+        .info {
+            margin: 5px 0;
+            font-size: 1rem;
+        }
+
+        .label {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 600px) {
+            :root {
+                --card-size: 250px;
+            }
+
+            .flipper {
+                width: calc(var(--card-size) * 1.586);
+                height: var(--card-size);
+            }
+
+            .card-front img {
+                max-width: 70%;
+            }
+
+            .card-back h2 {
+                font-size: 1.25rem;
+            }
+
+            .card-number {
+                font-size: 1.25rem;
+            }
+
+            .info {
+                font-size: 0.9rem;
+            }
+
+            .signature-strip {
+                width: 90%;
+            }
+
+            .signature {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="flip-container">
+        <div class="flipper">
+            <div class="card card-front">
+                <img src="https://simplyhaffz.github.io/337/pass/img/lelo.png" alt="Logo">
+            </div>
+            <div class="card card-back">
+                <h2>The N-Word Pass</h2>
+                <div class="card-number">0000 0000 0000 0002</div>
+                <div class="signature-strip" style="text-align: center; padding: 10px 0;">
+                    <span class="signature">Only given to the Worthy of Mortals</span>
+                </div>
+                <div class="info">
+                    <span class="label">Given by:</span> <span>Dilan S. Hancer</span> 
+                    <span class="label" style="margin-left: 30px;">Given to:</span> <span>Lelo</span>
+                </div>
+                <div class="info">
+                    <span class="label">Uses:</span>
+                    <span>Unlimited</span>
+                </div>
+                <div class="info">
+                    <span class="label">Validity:</span>
+                    <span>∞</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
