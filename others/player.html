@@ -407,6 +407,20 @@
                     <img src="https://simplyhaffz.github.io/337/images/Covers/Slow.jpg" id="_18" />
                     <img src="https://simplyhaffz.github.io/337/images/Covers/NightAfterNight.jpg" id="_19" />
                     <img src="https://simplyhaffz.github.io/337/images/Covers/StereoHearts.jpg" id="_20" />
+                    <img src="https://simplyhaffz.github.io/337/images/Covers/FromYouForMe.jpg" id="_21" />
+                    <img src="https://simplyhaffz.github.io/337/images/Covers/King.jpg" id="_22" />
+                    <img src="https://simplyhaffz.github.io/337/images/Covers/Head&Heart.jpg" id="_23" />
+                    <img src="https://simplyhaffz.github.io/337/images/Covers/CallYouMine.jpg" id="_24" />
+                    <img src="https://simplyhaffz.github.io/337/images/Covers/DontGiveUpOnMe.jpg" id="_25" />
+                    <img src="https://simplyhaffz.github.io/337/images/Covers/DontGiveUponLove.jpg" id="_26" />
+                    <img src="https://simplyhaffz.github.io/337/images/Covers/Viento.jpg" id="_27" />
+                    <img src="https://simplyhaffz.github.io/337/images/Covers/Wonderland.jpg" id="_28" />
+                    <img src="https://simplyhaffz.github.io/337/images/Covers/Intro(Infected).jpg" id="_29" />
+                    <img src="https://simplyhaffz.github.io/337/images/Covers/Starving.jpg" id="_30" />
+                    <img src="https://simplyhaffz.github.io/337/images/Covers/LikeItIs.jpg" id="_31" />
+                    <img src="https://simplyhaffz.github.io/337/images/Covers/IllBehere.jpg" id="_32" />
+                    <img src="https://simplyhaffz.github.io/337/images/Covers/WaitingOnYou.jpg" id="_33" />
+
                     <div id="buffer-box">Buffering ...</div>
                 </div>
                 <div id="player-controls">
@@ -461,26 +475,39 @@ $(function () {
     const repeatButton = $("#repeat-button");
     const shuffleButton = $("#shuffle-button");
     const albums = [
-        "Falling",
-        "Used To",
-        "Enemy",
-        "Getaway",
-        "Happy Now",
-        "Don't Call Me Up",
-        "Thunder",
-        "That's So True",
-        "We Can't Be Friends",
-        "Infinity",
-        "Get Me out of Here",
-        "More Than A Stranger",
-        "Broken Hearts",
-        "Breathe",
-        "Dive",
-        "LA On A Saturday Night",
-        "Time to Fly",
-        "Slow",
-        "Night After Night",
-        "Stereo Hearts",
+    "Falling",
+    "Used To",
+    "Enemy",
+    "Getaway",
+    "Happy Now",
+    "Don't Call Me Up",
+    "Thunder",
+    "That's So True",
+    "We Can't Be Friends",
+    "Infinity",
+    "Get Me out of Here",
+    "More Than A Stranger",
+    "Broken Hearts",
+    "Breathe",
+    "Dive",
+    "LA On A Saturday Night",
+    "Time to Fly",
+    "Slow",
+    "Night After Night",
+    "Stereo Hearts",
+    "From You, For Me",
+    "King",
+    "Head & Heart",
+    "Call You Mine",
+    "Don't Give Up on Me",
+    "Don't Give Up on Love",
+    "Viento",
+    "Wonderland",
+    "Intro(Infected)",
+    "Starving",
+    "Like It Is",
+    "I'll Be here",
+    "Waiting On You",
     ];
     const trackNames = [
         "Trevor Daniel",
@@ -503,29 +530,58 @@ $(function () {
         "Diviners, RIELL",
         "Lvly, G Curtis",
         "Gym Class Heroes, Adam Levine",
+        "Frank Pierce, Sam Vasami",
+        "Olly Alexander",
+        "Joel Corry, MNEK",
+        "The Chainsmokers, Bebe Rexha",
+        "Hot Shade, Cal",
+        "Kygo, Sam Tinnesz",
+        "Gabry Ponte, Vicco",
+        "Axel Johansson",
+        "Sickick",
+        "Hailee Steinfeld, Grey, Zedd",
+        "Kygo, Zara Larsson, Tyga",
+        "Walk off the Earth",
+        "Thimlife, SØPHIA",
     ];
-    const albumArtworks = ["_1", "_2", "_3", "_4", "_5", "_6", "_7", "_8", "_9", "_10", "_11", "_12", "_13", "_14", "_15", "_16", "_17", "_18", "_19", "_20", ];
+    const albumArtworks =["_1", "_2", "_3", "_4", "_5", "_6", "_7", "_8", "_9", "_10", "_11", "_12", "_13", "_14", "_15", "_16", "_17", "_18", "_19", "_20", "_21", "_22", "_23", "_24", "_25", "_26", "_27", "_28", "_29", "_30", "_31", "_32", "_33"]
     const trackUrl = [
-        "https://simplyhaffz.github.io/337/sounds/Falling.mp3",
-        "https://simplyhaffz.github.io/337/sounds/UsedTo.mp3",
-        "https://simplyhaffz.github.io/337/sounds/Enemy.mp3",
-        "https://simplyhaffz.github.io/337/sounds/Getaway.mp3",
-        "https://simplyhaffz.github.io/337/sounds/HappyNow.mp3",
-        "https://simplyhaffz.github.io/337/sounds/DontCallMeUp.mp3",
-        "https://simplyhaffz.github.io/337/sounds/Thunder.mp3",
-        "https://simplyhaffz.github.io/337/sounds/ThatsSoTrue.mp3",
-        "https://simplyhaffz.github.io/337/sounds/WeCantBeFriends.mp3",
-        "https://simplyhaffz.github.io/337/sounds/Infinity.mp3",
-        "https://simplyhaffz.github.io/337/sounds/GetMeOutOfHere.mp3",
-        "https://simplyhaffz.github.io/337/sounds/MoreThanAStranger.mp3",
-        "https://simplyhaffz.github.io/337/sounds/BrokenHearts.mp3",
-        "https://simplyhaffz.github.io/337/sounds/Breathe.mp3",
-        "https://simplyhaffz.github.io/337/sounds/Dive.mp3",
-        "https://simplyhaffz.github.io/337/sounds/LAOnASaturdayNight.mp3",
-        "https://simplyhaffz.github.io/337/sounds/TimetoFly.mp3",
-        "https://simplyhaffz.github.io/337/sounds/Slow.mp3",
-        "https://simplyhaffz.github.io/337/sounds/NightAfterNight.mp3",
-        "https://simplyhaffz.github.io/337/sounds/StereoHearts.mp3",
+        [
+    "https://simplyhaffz.github.io/337/sounds/Falling.mp3",
+    "https://simplyhaffz.github.io/337/sounds/UsedTo.mp3",
+    "https://simplyhaffz.github.io/337/sounds/Enemy.mp3",
+    "https://simplyhaffz.github.io/337/sounds/Getaway.mp3",
+    "https://simplyhaffz.github.io/337/sounds/HappyNow.mp3",
+    "https://simplyhaffz.github.io/337/sounds/DontCallMeUp.mp3",
+    "https://simplyhaffz.github.io/337/sounds/Thunder.mp3",
+    "https://simplyhaffz.github.io/337/sounds/ThatsSoTrue.mp3",
+    "https://simplyhaffz.github.io/337/sounds/WeCantBeFriends.mp3",
+    "https://simplyhaffz.github.io/337/sounds/Infinity.mp3",
+    "https://simplyhaffz.github.io/337/sounds/GetMeOutOfHere.mp3",
+    "https://simplyhaffz.github.io/337/sounds/MoreThanAStranger.mp3",
+    "https://simplyhaffz.github.io/337/sounds/BrokenHearts.mp3",
+    "https://simplyhaffz.github.io/337/sounds/Breathe.mp3",
+    "https://simplyhaffz.github.io/337/sounds/Dive.mp3",
+    "https://simplyhaffz.github.io/337/sounds/LAOnASaturdayNight.mp3",
+    "https://simplyhaffz.github.io/337/sounds/TimetoFly.mp3",
+    "https://simplyhaffz.github.io/337/sounds/Slow.mp3",
+    "https://simplyhaffz.github.io/337/sounds/NightAfterNight.mp3",
+    "https://simplyhaffz.github.io/337/sounds/StereoHearts.mp3",
+    "https://simplyhaffz.github.io/337/sounds/FromYouForMe.mp3",
+    "https://simplyhaffz.github.io/337/sounds/King.mp3",
+    "https://simplyhaffz.github.io/337/sounds/Head&Heart.mp3",
+    "https://simplyhaffz.github.io/337/sounds/CallYouMine.mp3",
+    "https://simplyhaffz.github.io/337/sounds/DontGiveUpOnMe.mp3",
+    "https://simplyhaffz.github.io/337/sounds/DontGiveUponLove.mp3",
+    "https://simplyhaffz.github.io/337/sounds/Viento.mp3",
+    "https://simplyhaffz.github.io/337/sounds/Wonderland.mp3",
+    "https://simplyhaffz.github.io/337/sounds/Intro(Infected).mp3",
+    "https://simplyhaffz.github.io/337/sounds/Starving.mp3",
+    "https://simplyhaffz.github.io/337/sounds/LikeItIs.mp3",
+    "https://simplyhaffz.github.io/337/sounds/IllBehere.mp3",
+    "https://simplyhaffz.github.io/337/sounds/WaitingOnYou.mp3",
+]
+
         
     ];
 
