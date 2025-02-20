@@ -158,7 +158,8 @@
             color: #fff;
             font-size: 12px;
             white-space: pre;
- padding: 5px 6px;
+            padding: 5px 6px;
+
             border-radius: 4px;
             display: none;
         }
@@ -317,7 +318,8 @@
             width: 250px;
             height: 100%;
             margin: 0 5px 0 141px;
- float: right;
+            float: right;
+
             overflow: hidden;
         }
 
@@ -546,7 +548,7 @@ $(function () {
     ];
     const albumArtworks =["_1", "_2", "_3", "_4", "_5", "_6", "_7", "_8", "_9", "_10", "_11", "_12", "_13", "_14", "_15", "_16", "_17", "_18", "_19", "_20", "_21", "_22", "_23", "_24", "_25", "_26", "_27", "_28", "_29", "_30", "_31", "_32", "_33"]
     const trackUrl = [
-        [
+
     "https://simplyhaffz.github.io/337/sounds/Falling.mp3",
     "https://simplyhaffz.github.io/337/sounds/UsedTo.mp3",
     "https://simplyhaffz.github.io/337/sounds/Enemy.mp3",
@@ -580,10 +582,8 @@ $(function () {
     "https://simplyhaffz.github.io/337/sounds/LikeItIs.mp3",
     "https://simplyhaffz.github.io/337/sounds/IllBehere.mp3",
     "https://simplyhaffz.github.io/337/sounds/WaitingOnYou.mp3",
-]
-
-        
     ];
+
 
     let bgArtworkUrl,
         i = playPauseButton.find("i"),
@@ -802,17 +802,21 @@ $(function () {
 
         $(audio).on("timeupdate", updateCurrTime);
 
-playPreviousTrackButton.on("click", function () {
+    playPreviousTrackButton.on("click", function () {
+
             selectTrack(-1);
         });
-        playNextTrackButton.on("click", function () {
+    playNextTrackButton.on("click", function () {
+
             selectTrack(1);
         });
-        repeatButton.on("click", function () {
+    repeatButton.on("click", function () {
+
             isRepeating = !isRepeating;
             repeatButton.toggleClass("active", isRepeating);
         });
-        shuffleButton.on("click", function () {
+    shuffleButton.on("click", function () {
+
             isShuffling = !isShuffling;
             shuffleButton.toggleClass("active", isShuffling);
             if (isShuffling) {
