@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Tartarus 🔸</title>
+    <!-- Meta tags for character set and responsive design -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="msapplication-TileColor" content="#000000">
+    <meta name="msapplication-config" content="imagesX/imgmain/icons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="gallery.html">
+    <meta property="og:title" content="Gallery">
+    <meta property="og:image" content="imagesX/imgmain/eshe/Haffz.gif">
+    <meta property="og:description" content="Gallery of Pictures">
+
+    <!-- Favicon links for different devices -->
+    <link rel="apple-touch-icon" sizes="180x180" href="imagesX/imgmain/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="imagesX/imgmain/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="imagesX/imgmain/icons/favicon-16x16.png">
+    <link rel="manifest" href="imagesX/imgmain/icons/site.webmanifest">
+    <link rel="mask-icon" href="imagesX/imgmain/icons/safari-pinned-tab.svg" color="#000000">
+    <link rel="shortcut icon" href="imagesX/imgmain/icons/favicon.ico">
+
+    <!-- Stylesheet inclusions -->
+    <link rel="stylesheet" href="css/stylesX.css?v=8">
+    <link rel="comment-stylesheet" href="css/comment-widget.html">
+    
+    <style>
+        /* Login Overlay Styles */
+        #gallery_loginOverlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-family: monospace;
+        }
+        
+        #gallery_loginForm {
+            background-color: #111;
+            padding: 2rem;
+            border: 1px solid #333;
+            border-radius: 5px;
+            width: 300px;
+            text-align: center;
+        }
+        
+        #gallery_loginForm input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            background: #222;
+            border: 1px solid #444;
+            color: white;
+        }
+        
+        #gallery_loginForm button {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        #gallery_loginForm button:hover {
+            background: #444;
+        }
+        
+        .gallery-login-error {
+            color: #ff5555;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="crt">
+    <div id="wrapper" class="outlined">
+        <header>
+            <div id="site_title">HAFFZ 🔸</div>
+            <div style="background-color: var(--TextColor); width: 0.55vh; height: 66%;"></div>
+            <div id="page_title">Gallery</div>
+            <div id="control_panel">
+                <!-- Volume Slider -->
+                <div id="volume_slider_wrapper" class="outlined">
+                    <input type="range" min="0" max="1" step="0.001" id="volume_slider"></input>
+                </div>
+                <!-- Music Toggle Button -->
+                <div id="music_toggle" class="outlined toggle" on>
+                    <img id="music_toggle_icon" class="toggle_icon" style="filter: invert(); pointer-events: none;" src="imagesX/imgmain/button/music_on.svg"></img>
+                </div>
+                <!-- CRT Toggle Button -->
+                <div id="crt_toggle" class="outlined toggle" on>
+                    <img id="crt_toggle_icon" class="toggle_icon" style="pointer-events: none;" src="imagesX/imgmain/button/crt_on.svg"></img>
+                </div>
+            </div>
+        </header>
+        <div id="content_wrapper">
+            <aside class="outlined">
+                <div id="navbar_icon" class="outlined">
+                    <div style="width: 100%; height: 100%; background-size: contain; background-image: url(imagesX/imgmain/eshe/Haffz.gif)"></div>
+                </div>
+                <!-- Navigation Buttons -->
+                <div class="outlined navbar_button" context="General Site Info" style="display: flex; justify-content: center; align-items: center; text-align: center;">
+                    <a href="about.html" style="text-decoration: none; color: inherit;">about</a>
+                </div>
+                <div class="outlined navbar_button glow" context="Art Gallery" style="display: flex; justify-content: center; align-items: center; text-align: center;">
+                    <a href="gallery.html" style="text-decoration: none; color: inherit;">gallery</a>
+                </div>
+                <div class="outlined navbar_button" context="My arts and creations" style="display: flex; justify-content: center; align-items: center; text-align: center;">
+                    <a href="arts.html" style="text-decoration: none; color: inherit;">Arts</a>
+                </div>
+                <div class="outlined navbar_button" context="bio Info" style="display: flex; justify-content: center; align-items: center; text-align: center;">
+                    <a href="bio.html" style="text-decoration: none; color: inherit;">bio</a>
+                </div>
+                <div class="outlined navbar_button" context="My Social Links" style="display: flex; justify-content: center; align-items: center; text-align: center;">
+                    <a href="links.html" style="text-decoration: none; color: inherit;">links</a>
+                </div>
+                <div class="outlined navbar_button" context="Daily Log" style="display: flex; justify-content: center; align-items: center; text-align: center;">
+                    <a href="Chronicle.html" style="text-decoration: none; color: inherit;">Chronicle</a>
+                </div>
+                <div class="outlined navbar_button blood" context="defiance" style="display: flex; justify-content: center; align-items: center; text-align: center;">
+                    <a href="defiance.html" style="text-decoration: none; color: inherit;">defiance</a>
+                </div>
+                <!-- Statistics -->
+                <div id="statistics" class="outlined" style="font-size: 2.5vh">
+                    <div>LAST UPDATE</div>
+                    <div style="font-size: 3vh">26-02-2025</div>
+                    <div style="height: 1vh"></div>
+                    <div>PAGE VIEWS</div>
+                    <div id="counter" style="font-size: 5vh">25.498</div>
+                    <div style="height: 1vh"></div>
+                    <div>COHERENCE</div>
+                    <div id="coherence" style="font-size: 5vh">0,97</div>
+                </div>
+            </aside>
+            <main class="outlined">
+                <div id="context"></div>
+                <!--| Gallery |---------------------------------->
+                <div id="gallery" class="page_content">
+                    <!-- Login Overlay (now inside gallery wrapper) -->
+                   <center>
+                    <div id="gallery_loginOverlay">
+                        <div id="gallery_loginForm">
+                            <h2>Gallery Access</h2>
+                            <p>Enter credentials to view gallery</p>
+                            <input type="text" id="gallery_username" placeholder="Username" autocomplete="off">
+                            <input type="password" id="gallery_password" placeholder="Password" autocomplete="off">
+                            <button onclick="attemptGalleryLogin()">Enter</button>
+                            <div id="gallery_loginError" class="gallery-login-error">Invalid credentials</div>
+                        </div>
+                    </div>
+                   </center>
+                       
+                    <div id="gallery_wrapper" class="outlined" style="display:none;">
+                        <div id="gallery_array">
+                            <div class="outlined gallery_item" style="position: relative; background-image: url('imagesX/imgmain/gallery/dln1.jpg');">
+                                <svg viewBox="0 0 180 40">
+                                    <rect width="100%" height="75%" fill="#000" fill-opacity="0.7" style="border-bottom: 1px solid #fff"></rect>
+                                    <text x="8" y="20" fill="white">Sept 21, 2023</text>
+                                </svg>
+                            </div>
+                            <div class="outlined gallery_item" style="position: relative; background-image: url('imagesX/imgmain/gallery/dln2.jpg');">
+                                <svg viewBox="0 0 180 40">
+                                    <rect width="100%" height="75%" fill="#000" fill-opacity="0.7" style="border-bottom: 1px solid #fff"></rect>
+                                    <text x="8" y="20" fill="white">Oct 04, 2024</text>
+                                </svg>
+                            </div>
+                            <div class="outlined gallery_item" style="position: relative; background-image: url('imagesX/imgmain/gallery/dln3.jpg');">
+                                <svg viewBox="0 0 180 40">
+                                    <rect width="100%" height="75%" fill="#000" fill-opacity="0.7" style="border-bottom: 1px solid #fff"></rect>
+                                    <text x="8" y="20" fill="white">Sept 06, 2024</text>
+                                </svg>
+                            </div>
+                            <div class="outlined gallery_item" style="position: relative; background-image: url('imagesX/imgmain/gallery/dln4.jpg');">
+                                <svg viewBox="0 0 180 40">
+                                    <rect width="100%" height="75%" fill="#000" fill-opacity="0.7" style="border-bottom: 1px solid #fff"></rect>
+                                    <text x="8" y="20" fill="white">Mar 15, 2025</text>
+                                </svg>
+                            </div>
+                            <div class="outlined gallery_item" style="position: relative; background-image: url('imagesX/imgmain/gallery/dln5.jpg');">
+                                <svg viewBox="0 0 180 40">
+                                    <rect width="100%" height="75%" fill="#000" fill-opacity="0.7" style="border-bottom: 1px solid #fff"></rect>
+                                    <text x="8" y="20" fill="white">Feb 11, 2025</text>
+                                </svg>
+                            </div>
+                            <div class="outlined gallery_item" style="position: relative; background-image: url('imagesX/imgmain/gallery/dln6.jpg');">
+                                <svg viewBox="0 0 180 40">
+                                    <rect width="100%" height="75%" fill="#000" fill-opacity="0.7" style="border-bottom: 1px solid #fff"></rect>
+                                    <text x="8" y="20" fill="white">Dec 10, 2023</text>
+                                </svg>
+                            </div>
+                            <div class="outlined gallery_item" style="position: relative; background-image: url('imagesX/imgmain/gallery/dln7.jpg');">
+                                <svg viewBox="0 0 180 40">
+                                    <rect width="100%" height="75%" fill="#000" fill-opacity="0.7" style="border-bottom: 1px solid #fff"></rect>
+                                    <text x="8" y="20" fill="white">Aug 31, 2022</text>
+                                </svg>
+                            </div>
+                            <div class="outlined gallery_item" style="position: relative; background-image: url('imagesX/imgmain/gallery/dln8.jpg');">
+                                <svg viewBox="0 0 180 40">
+                                    <rect width="100%" height="75%" fill="#000" fill-opacity="0.7" style="border-bottom: 1px solid #fff"></rect>
+                                    <text x="8" y="20" fill="white">Feb 21, 2025</text>
+                                </svg>
+                            </div>
+                            <div class="outlined gallery_item" style="position: relative; background-image: url('imagesX/imgmain/gallery/dln9.jpg');">
+                                <svg viewBox="0 0 180 40">
+                                    <rect width="100%" height="75%" fill="#000" fill-opacity="0.7" style="border-bottom: 1px solid #fff"></rect>
+                                    <text x="8" y="20" fill="white">Feb 27, 2020</text>
+                                </svg>
+                            </div>
+                            <div class="outlined gallery_item" style="position: relative; background-image: url('imagesX/imgmain/gallery/dln10.jpg');">
+                                <svg viewBox="0 0 180 40">
+                                    <rect width="100%" height="75%" fill="#000" fill-opacity="0.7" style="border-bottom: 1px solid #fff"></rect>
+                                    <text x="8" y="20" fill="white">Jul 03, 2018</text>
+                                </svg>
+                            </div>
+                            <div class="outlined gallery_item" style="position: relative; background-image: url('imagesX/imgmain/gallery/dln11.jpg');">
+                                <svg viewBox="0 0 180 40">
+                                    <rect width="100%" height="75%" fill="#000" fill-opacity="0.7" style="border-bottom: 1px solid #fff"></rect>
+                                    <text x="8" y="20" fill="white">Jul 29, 2019</text>
+                                </svg>
+                            </div>
+                            <div class="outlined gallery_item" style="position: relative; background-image: url('imagesX/imgmain/gallery/dln12.jpg');">
+                                <svg viewBox="0 0 180 40">
+                                    <rect width="100%" height="75%" fill="#000" fill-opacity="0.7" style="border-bottom: 1px solid #fff"></rect>
+                                    <text x="8" y="20" fill="white">Jun 4, 2021</text>
+                                </svg>
+                            </div>
+                            <div class="outlined gallery_item" style="position: relative; background-image: url('imagesX/imgmain/gallery/dln13.jpg');">
+                                <svg viewBox="0 0 180 40">
+                                    <rect width="100%" height="75%" fill="#000" fill-opacity="0.7" style="border-bottom: 1px solid #fff"></rect>
+                                    <text x="8" y="20" fill="white">Oct 14, 2022</text>
+                                </svg>
+                            </div>
+                            <div class="outlined gallery_item" style="position: relative; background-image: url('imagesX/imgmain/gallery/dln14.jpg');">
+                                <svg viewBox="0 0 180 40">
+                                    <rect width="100%" height="75%" fill="#000" fill-opacity="0.7" style="border-bottom: 1px solid #fff"></rect>
+                                    <text x="8" y="20" fill="white"> </text>
+                                </svg>
+                            </div>
+                            <div class="outlined gallery_item" style="position: relative; background-image: url('imagesX/imgmain/gallery/dln15.jpg');">
+                                <svg viewBox="0 0 180 40">
+                                    <rect width="100%" height="75%" fill="#000" fill-opacity="0.7" style="border-bottom: 1px solid #fff"></rect>
+                                    <text x="8" y="20" fill="white"></text>
+                                </svg>
+                            </div>
+                            <div class="outlined gallery_item" style="position: relative; background-image: url('imagesX/imgmain/gallery/dln16.jpg');">
+                                <svg viewBox="0 0 180 40">
+                                    <rect width="100%" height="75%" fill="#000" fill-opacity="0.7" style="border-bottom: 1px solid #fff"></rect>
+                                    <text x="8" y="20" fill="white"></text>
+                                </svg>
+                            </div>
+                            <div class="outlined gallery_item" style="position: relative; background-image: url('imagesX/imgmain/gallery/dln17.jpg');">
+                                <svg viewBox="0 0 180 40">
+                                    <rect width="100%" height="75%" fill="#000" fill-opacity="0.7" style="border-bottom: 1px solid #fff"></rect>
+                                    <text x="8" y="20" fill="white"></text>
+                                </svg>
+                            </div>
+                            <div class="outlined gallery_item" style="position: relative; background-image: url('imagesX/imgmain/gallery/dln18.jpg');">
+                                <svg viewBox="0 0 180 40">
+                                    <rect width="100%" height="75%" fill="#000" fill-opacity="0.7" style="border-bottom: 1px solid #fff"></rect>
+                                    <text x="8" y="20" fill="white"></text>
+                                </svg>
+                            </div>
+                            <div class="outlined gallery_item" style="position: relative; background-image: url('imagesX/imgmain/gallery/dln19.jpg');">
+                                <svg viewBox="0 0 180 40">
+                                    <rect width="100%" height="75%" fill="#000" fill-opacity="0.7" style="border-bottom: 1px solid #fff"></rect>
+                                    <text x="8" y="20" fill="white"></text>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="gallery_info_wrapper">
+                        <a id="gallery_preview" class="outlined" target="_blank" href="imagesX/imgmain/gallery/dln1.jpg">
+                            <img id="gallery_preview_img" src="imagesX/imgmain/gallery/dln1.jpg" style="animation: 0.5s ease-out 0s 1 normal none running imageAppear;">
+                        </a>
+                        <div id="gallery_description" class="outlined selectable"></div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <!-- CRT Scan Effect -->
+    <div id="crt_scan_fx"></div>
+ 
+    <!-- Scripts and References -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+    <script src="js/main.js?v=8"></script>
+    <script src="js/howl.js"></script>
+    
+    <script>  
+        // Gallery login functionality
+        function attemptGalleryLogin() {
+            const username = document.getElementById('gallery_username').value;
+            const password = document.getElementById('gallery_password').value;
+            const errorElement = document.getElementById('gallery_loginError');
+            
+            // Replace these with your actual credentials
+            const validUsername = "        ";
+            const validPassword = "        ";
+            
+            if (username === validUsername && password === validPassword) {
+                document.getElementById('gallery_loginOverlay').style.display = 'none';
+                document.getElementById('gallery_wrapper').style.display = 'block';
+            } else {
+                errorElement.style.display = 'block';
+                setTimeout(() => {
+                    errorElement.style.display = 'none';
+                }, 3000);
+            }
+        }
+        
+        // Allow pressing Enter to submit login form
+        document.getElementById('gallery_password').addEventListener('keyup', function(e) {
+            if (e.key === 'Enter') {
+                attemptGalleryLogin();
+            }
+        });
+    </script>
+</body>
+</html>

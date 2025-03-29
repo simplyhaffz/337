@@ -1,0 +1,307 @@
+/*
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+█ -= FONT DEFINITION CHECK =- █ Check all defined fonts within GRID LEVEL. █
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+*/
+@font-face { /* Microsoft DOS - Font of SUPERHOT */
+  font-family: "MS DOS";
+  src: url("PxPlus_IBM_VGA8.ttf");
+}
+
+@font-face { /* Commodore 64 - Font of Retrogrydon */
+  font-family: "C64";
+  src: url("C64_Pro_Mono-STYLE.ttf");
+}
+
+@font-face { /* BIT.TRIP */
+  font-family: "BIT.TRIP";
+  src: url("bit-trip.ttf");
+}
+
+/* Body Definition Section */
+
+body {
+background-color: black;
+font-family: "C64";
+font-size: 16px;
+color: #FFFFFF;
+}
+
+/*
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+█ COLORVAR MATRIX █ Define colors at ROOT sector.█
+█▀▀▀▀▀▀▀▀▀▀█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
+█ --normal █ Normal State.                       █
+█ --hover  █ Hovered State Definition.           █
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+*/
+
+:root {
+/* Terminal*/
+--terminalblock: rgba(0, 0, 32, .5);
+--terminaledge:  #0000FF;
+/* Link */
+--normal: #000080;
+--hover: #0000FF;
+}
+
+/*
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+█ Color Stylization █ Allow to redefine colorset. █
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+*/
+
+span.red { color: #FF0000; } /* RED */
+span.darkred { color: #800000; }
+span.yellow { color: #FFFF00; } /* YELLOW */
+span.darkyellow { color: #808000; }
+span.green { color: #00FF00; } /* GREEN */
+span.darkgreen { color: #008000; }
+span.cyan { color: #00FFFF; } /* CYAN */
+span.darkcyan { color: #008080; }
+span.blue { color: #0000FF; } /* BLUE */
+span.darkblue { color: #000080; }
+span.purple { color: #FF00FF; } /* PURPLE */
+span.darkpurple { color: #800080; }
+span.white { color: #FFFFFF; } /* WHITE */
+span.grey { color: #C0C0C0; } /* GRAY */
+span.darkgrey { color: #808080; } /* DARK GRAY */
+
+/*
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+█ Terminal Stylization █ Content Section of the Terminal. █
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+*/
+
+#info, #main {
+  background-color: var(--terminalblock);
+  border-style: double;
+  border-color: var(--terminaledge);
+  text-align: center;
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+/*
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+█ LINK MATRIX █ Begin Link Style Section █ // Cause I'm not very fond of the Default Link Design browsers come with!
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+█ TERMSTATE █ DESCRIPTION OF TERMINAL STATUS      █ // Hmm, do I really *have* to explain this?
+█▄▄▄▄▄▄▄▄▄▄▄█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█ // Maybe users of The Matrix *do* understand this well. But eh!
+█ A         █ TERMINAL CONNECTION IDLE STATE      █ // I'mma just drop this down here for documentation purposes.
+█ A:HOVER   █ USER STANDING ON TERMINAL CONNECTOR █
+█ A:ACTIVE  █ TERMINAL CONNECTION IS ALIVE        █
+█ A:VISITED █ USER HAS ALREADY EXPLORED THIS AREA █
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+*/
+
+#terminal-output {
+  overflow: scroll; /* Allows scrolling */
+  scrollbar-width: thin; /* Makes the scrollbar thinner */
+  scrollbar-color: transparent transparent; /* Hides the scrollbar */
+}
+
+
+a {
+color: var(--normal);
+text-decoration: none;
+}
+
+a:hover {
+color: var(--hover);
+animation: linkglowtext 1s infinite;
+}
+
+a:active {
+animation: linkglowtext 0.05s infinite;
+animation-timing-function: ease-in-out;
+}
+
+
+/*
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+█ ANIMATION █ TERMINAL/LINK GLOW █
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+*/
+
+@keyframes linkglowtext {
+0% { color: var(--hover); }
+50% { color: #FFFFFF; }
+100% { color: var(--hover); }
+}
+
+
+/*
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+█ ANIMATION █ OPEN/CLOSE █ // For seamless transition inbetween Terminals!
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+*/
+
+a.new, p.new {
+animation: glowtextnew 1s infinite !important;
+}
+
+a.disabled {
+color: #FF0000;
+}
+
+.open {
+animation: terminal_open 1s;
+animation-timing-function: ease-in-out;
+}
+
+.close {
+animation: terminal_close 1s;
+animation-timing-function: ease-in-out;
+opacity: 0;
+}
+
+@keyframes terminal_open {
+0% { height: 0px; padding-top: 10px; padding-bottom: 0px; width: 0px; border-color: inherit; color: #000000; }
+50% { height: auto; padding-top: 10px; padding-bottom: 10px; width: 800px; border-color: #FFFFFF; color: #000000; }
+75% { width: 800px; border-color: #FFFFFF; color: #FFFFFF; }
+100% { width: 800px; color: inherit; }
+}
+
+@keyframes terminal_close {
+0% { opacity: 100; width: 800px; color: inherit; }
+100% { opacity: 0; height: 0px; padding-top: 0px; padding-bottom: 0px; width: 0px; border-color: inherit; color: #000000; }
+}
+
+@keyframes glowtextnew {
+0% { color: #FFFFFF; }
+100% { color: var(--hover); }
+}
+
+/*
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+█ ANIMATION █ LOADER █
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+*/
+.no-js #loader {
+  display: none;
+}
+
+.js #loader {
+  display: block;
+  position: absolute;
+  left: 100px;
+  top: 0;
+}
+
+.se-pre-con {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background: #000;
+}
+
+/*
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+█ SCANLINE EFFECT █ GET DAT NOSTALGIA FLOWIN' █
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+*/
+body:before {
+  content: "";
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1000;
+  background-image: url("scanlines.png");
+  background-repeat: all;
+  background-position: 0px 0px;
+  animation-name: Static;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: steps(4);
+  box-shadow: inset 0px 0px 10em rgba(0,0,0,0.4);
+}
+
+body:after {
+  content: "";
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1000;
+  background-image: url("scanlines.png");
+  background-repeat: all;
+  background-position: 0px 0px;
+  animation-name: Static;
+  animation-duration: 0.8s;
+  animation-iteration-count: infinite;
+  animation-timing-function: steps(15);
+}
+
+@keyframes Static {
+  0% { background-position: 0px 0px; }
+  100% { background-position: 0px 30px; }
+}
+
+/* Additional styles for the interface */
+#login, #data {
+  background-color: var(--terminalblock);
+  border: 2px double var(--terminaledge);
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 800px;
+  align-content: center;
+}
+
+#terminal-output {
+  height: 400px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--terminaledge);
+}
+
+.button-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+button {
+  background-color: transparent;
+  border: 1px solid var(--terminaledge);
+  color: white;
+  padding: 5px 10px;
+  font-family: "C64";
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--terminaledge);
+  color: black;
+}
+
+input {
+  background-color: black;
+  border: 1px solid var(--terminaledge);
+  color: white;
+  padding: 5px;
+  font-family: "C64";
+  margin-bottom: 10px;
+  width: 200px;
+}
+
+.error {
+  color: #FF0000;
+}

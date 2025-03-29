@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+  
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tartarus🔸</title>
+
+<script>
+    // Array of URLs to redirect to
+    var urls = [
+        "about.html"
+    ];
+    
+    // Generate a random index (0 or 1)
+    var randomIndex = Math.floor(Math.random() * urls.length);
+    
+    // Delay the redirection by 5000 milliseconds (5 seconds)
+    setTimeout(function() {
+        // Redirect to the randomly chosen URL
+        window.location.href = urls[randomIndex];
+    }, 5000); // 5000 milliseconds = 5 seconds
+</script>
+
+
+  
+<style>
+
+* {
+  margin:0px;
+  padding:0px;
+  }
+
+.layer {
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  background-repeat:repeat-x;
+  background-position-y: bottom;
+  pointer-events:none;
+  }
+  
+@keyframes rolling {
+  from {background-position-x: -3840px;}
+  to {background-position-x: 3840px;}
+}
+
+@keyframes bgMoveX {
+  0% {
+    background-position-x:-1024px;
+  }
+  100% {
+    background-position-x:1024px;
+  }
+}
+
+@keyframes fadeUp {
+  0% {
+    color:rgba(255, 255, 255, 0);
+    letter-spacing:9vw;
+  }
+  100% {
+    color:rgba(255, 255, 255, 1);
+    letter-spacing:5vw;
+  }
+}
+  
+.L1 {
+  background-image:url(imagesX/index/L1.svg);
+  animation: rolling 800s infinite linear;
+  }
+  
+.L2 {
+  background-image:url(imagesX/index/L2.svg);
+  animation: rolling 600s infinite linear;
+  }
+
+.L3 {
+  background-image:url(imagesX/index/L3.svg);
+  animation: rolling 400s infinite linear;
+  }
+
+.L4 {
+  background-image:url(imagesX/index/L4.svg);
+  animation: rolling 200s infinite linear;
+  }
+  
+.L5 {
+  background-image:url(imagesX/index/L5.svg);
+  animation: rolling 100s infinite linear;
+  }
+  
+.L6 {
+  background-image:url(imagesX/index/L6.svg);
+  animation: rolling 50s infinite linear;
+  filter: blur(2px);
+  }
+  
+.L7 {
+  background-image:url(imagesX/index/L7.svg);
+  animation: rolling 14s infinite linear;
+  filter: blur(10px);
+  }
+  
+.cloud1 {
+  background-image:url(imagesX/index/clouds_02.png);
+  animation: rolling 150s infinite linear;
+  background-position-y:-150px;
+  }
+  
+.cloud2 {
+  background-image:url(imagesX/index/clouds_02.png);
+  animation: rolling 30s infinite linear;
+  background-position-y:50px;
+  }
+  
+.bg1 {
+  background: rgb(0,0,0);
+  background: linear-gradient(180deg, rgba(0,0,0,1) 2%, rgba(255,255,255,1) 70%);
+  }
+  
+.bg2 {
+  background-image:url(imagesX/texture/texture-bg-01.png);
+  background-repeat:repeat!important;
+  animation: bgMoveX 1600s infinite linear;
+  }
+  
+.bg3 {
+  background-image:url(imagesX/texture/texture-bg-02.png);
+  background-repeat:repeat!important;
+  animation: bgMoveX 200s infinite linear;
+  }
+.bg4 {
+  background-image:url(imagesX/texture/texture-bg-03.png);
+  background-repeat:repeat!important;
+  animation: bgMoveX 100s infinite linear;
+  }
+  
+.vignette {
+  background: rgb(0,0,0);
+  background: radial-gradient(circle, rgba(0,0,0,0) 30%, rgba(0,0,0,1) 100%);
+  }
+
+
+.text {
+  color:white;
+  font-size:10vw;
+  display:block;
+  text-align:center;
+  line-height:100vh;
+  letter-spacing:5vw;
+  font-style:italic;
+  animation: fadeUp 5s ease-out;
+  }
+
+</style>
+    
+  </head>
+  <body>
+    <div class="layer bg1"></div>
+    <div class="layer bg2"></div>
+    <div class="layer bg3"></div>
+    <div class="layer bg4"></div>
+    <div class="layer text">Haffz ♡</div>
+    <div class="layer L1"></div>
+    <div class="layer L2"></div>
+    <div class="layer L3"></div>
+    <div class="layer L4"></div>
+    <div class="layer cloud1"></div>
+    <div class="layer L5"></div>
+    <div class="layer L6"></div>
+    <div class="layer cloud2"></div>
+    <div class="layer L7"></div>
+    <div class="layer vignette"></div>
+  </body>
+</html>

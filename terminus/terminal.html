@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Nymos Security Interface</title>
+    <link href="terminal.css" rel="stylesheet" type="text/css" media="all">
+    <script type="text/javascript" src="TypingText.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <!-- Login Section (Visible by default) -->
+    <div id="login" class="terminal-block">
+        <center>
+        <span class="white"><font size="15px" style="text-align: center;">Nymos <br> Security Interface</font> v1.0.0 (alpha)</span> <br> 
+        <span class="darkgreen">Into the Unknown</span><br>
+        <span class="green">// Copyright (c) 2025 Haffz //</span><br>
+       <br>
+        <br>
+        <span class="darkgrey">[<span class="grey">AUTH</span>]</span> - Enter Credentials to Proceed<br>
+        <input type="text" id="username" placeholder="Username" autocomplete="off"><br>
+        <input type="password" id="password" placeholder="Password" autocomplete="off"><br>
+        <button onclick="login()">[AUTHENTICATE]</button>
+        <br>
+        <span id="error" class="error"></span>
+        <br><br><br><br>
+        </span><span class="red">// A project of the free people //</span>
+        </center>
+    </div>
+
+    <!-- Terminal Interface (Hidden until login) -->
+    <div id="terminal-interface" class="terminal-block" style="display:none;">
+        <div id="terminal-output" class="terminal-output">
+            <!-- Terminal content will be populated here -->
+        </div>
+        
+        <div class="button-container">
+            <button onclick="runPing()">[PING]</button>
+            <button onclick="runTraceroute()">[TRACEROUTE]</button>
+            <button onclick="runPortScan()">[PORT SCAN]</button>
+            <button onclick="runSystemCheck()">[SYSTEM CHECK]</button>
+            <button onclick="logout()">[LOGOUT]</button>
+            <button onclick="clearTerminal()">[CLEAR TERMINAL]</button>
+        </div>
+        
+        <a href="https://simplyhaffz.github.io/337/404.html" onclick="jackIn()" class="jack-in">[DIVE IN]</a>
+    </div>
+
+   <style>
+::-webkit-scrollbar {
+  width: 0; /* Hide the scrollbar */
+  height: 0; /* Hide the scrollbar */
+}
+   </style>
+
+
+    <script>
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const error = document.getElementById('error');
+
+            if (username === '        ' && password === '        ') {
+                document.getElementById('login').style.display = 'none';
+                document.getElementById('terminal-interface').style.display = 'block';
+                initializeTerminal();
+            } else {
+                error.textContent = 'ERROR: Invalid credentials. Access denied.';
+            }
+        }
+
+        function logout() {
+            document.getElementById('terminal-interface').style.display = 'none';
+            document.getElementById('login').style.display = 'block';
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+            document.getElementById('error').textContent = '';
+        }
+
+        function initializeTerminal() {
+            const terminalOutput = document.getElementById('terminal-output');
+            // Add your terminal initialization code here
+            terminalOutput.innerHTML = `
+                <!-- Content Section (Hidden until login) -->
+      <p><span class="white"><font size="15px" style="text-align: center;">Nymos Security Interface</font> v1.0.0</span> <br> <span class="darkgreen">//</span><span class="green"> Nymos Core Online</span></p>
+      <p><span class="green">Copyright (c) 2025 Nymos Systems // [SECURE] Access Only</span></p>
+      <p><span class="darkgreen">//</span><span class="green"> [ALL] RIGHTS RESERVED // UNAUTHORIZED ACCESS PROHIBITED</span></p>
+      <br> <img src="https://simplyhaffz.github.io/X337/images/Turkiye.png" style="margin-top: 1%;"> <br>
+      <p><span class="darkgrey">[<span class="grey">SYSTEM</span>]</span> - Initializing Nymos Security Protocols <span class="white">. <span class="grey">. <span class="darkgrey">.</span></span></span> <span class="green">DONE.</span></p>
+      <p><span class="darkgrey">[<span class="grey">SYSTEM</span>]</span> - Loading Quantum Encryption Matrix <span class="white">. <span class="grey">. <span class="darkgrey">.</span></span></span> <span class="green">DONE.</span></p>
+      <br>
+      <p>--- GRAPHICAL INTERFACE COMPLETION ---</p>
+      <p><span class="darkgrey">[<span class="grey">STATUS</span>]</span> - Rendering Neural Network Interface <span class="white">. <span class="grey">. <span class="darkgrey">.</span></span></span> <span class="green">SUCCESS.</span></p>
+      <br>
+      <p>--- PINGING VIRTUAL SYSTEMS ---</p>
+      <p><span class="darkgrey">[<span class="grey">NETWORK</span>]</span> - Establishing Secure Connections <span class="white">. <span class="grey">. <span class="darkgrey">.</span></span></span> <span class="green">DONE.</span></p><br>
+      <span class="red">WARNING: UNAUTHORIZED ACCESS DETECTED.</span>
+      <p><span class="darkgrey">[<span class="grey">NETWORK</span>]</span> - Virtual Systems Synced <span class="white">. <span class="grey">. <span class="darkgrey">.</span></span></span> <span class="green">SECURE.</span></p>
+      <br>
+      <p><span class="darkcyan">--- <span class="cyan">PREPARING REALITY PARTITION TABLE</span> ---</span></p>
+      <p><span class="darkgrey">[<span class="grey">VR</span>]</span> - Partitioning Neural Datastreams <span class="white">. <span class="grey">. <span class="darkgrey">.</span></span></span> <span class="green">COMPLETE.</span></p>
+      <br>
+      <p><span class="darkgrey">[<span class="grey">SURFACE</span> - <span class="grey">SOLARA</span>]</span> Layer</p>
+      <p>--- 2 Terminal(s) Found ---</p>
+      <p><span class="darkgrey">[<span class="grey">STATUS</span>]</span> - Terminals Operational <span class="white">. <span class="grey">. <span class="darkgrey">.</span></span></span> <span class="green">SECURE.</span></p>
+      <br>
+      <p><span class="darkgreen">[<span class="green">LEVEL 1</span> - <span class="green">GALLIFREY</span>]</span> Layer</p>
+      <p>--- 9 Terminal(s) Found ---</p>
+      <p><span class="darkgrey">[<span class="grey">STATUS</span>]</span> - Terminals Operational <span class="white">. <span class="grey">. <span class="darkgrey">.</span></span></span> <span class="green">SECURE.</span></p>
+      <br>
+      <p><span class="darkcyan">[<span class="cyan">LEVEL 2</span> - <span class="cyan">XENITH</span>]</span> Layer</p>
+      <p>--- ? Terminal(s) Found ---</p>
+      <p><span class="darkgrey">[<span class="grey">STATUS</span>]</span> - Terminals Unknown <span class="white">. <span class="grey">. <span class="darkgrey">.</span></span></span></p>
+      <br>
+      <p><span class="darkgreen">[<span class="green">CONNECT</span>]</span> - CONNECTING TO THE NYMOS MATRIX <span class="white">. <span class="grey">. <span class="darkgrey">.</span></span></span> <span class="green">DONE.</span></p>
+      <p><span class="darkgrey">[<span class="grey">STATUS</span>]</span> - Neural Link Established <span class="white">. <span class="grey">. <span class="darkgrey">.</span></span></span> <span class="green">SECURE.</span></p>
+      <br>
+      <p><span class="green">--- NYMOS MATRIX ONLINE ---</span></p>
+      <p><span class="darkgrey">[<span class="grey">WARNING</span>]</span> - Unauthorized access will be met with immediate countermeasures.</p> <br>
+      <span class="red">WARNING:  DISCONNECTING THE NYMOS MATRIX. . .</span> <span class="red">DISCONNECTED</span>
+      <br><br><br> <font color="yellow">></font>
+    `;
+            
+            // Initialize typing effect if needed
+            if (typeof TypingText !== 'undefined') {
+                new TypingText(document.getElementById("terminal-output"), 1, function(i) {
+                    var ar = new Array("█", "░");
+                    return " " + ar[i.length % ar.length];
+                });
+                TypingText.runAll();
+            }
+        }
+
+// Toggle Ping
+let isPinging = false;
+let pingInterval;
+
+function runPing() {
+    const terminalOutput = document.getElementById('terminal-output');
+    
+    if (isPinging) {
+        // Stop pinging
+        clearInterval(pingInterval);
+        terminalOutput.innerHTML += `<p><span class="darkgrey">[<span class="grey">STATUS</span>]</span> - Ping stopped. <span class="red">CANCELLED.</span></p>`;
+        terminalOutput.scrollTop = terminalOutput.scrollHeight;
+        isPinging = false;
+    } else {
+        // Start pinging
+        isPinging = true;
+        terminalOutput.innerHTML += `<p><span class="darkgrey">[<span class="grey">NETWORK</span>]</span> - Pinging 192.168.1.1...</p>`;
+        terminalOutput.scrollTop = terminalOutput.scrollHeight;
+        
+        pingInterval = setInterval(() => {
+            const randomTime = (Math.random() * (3 - 1) + 1).toFixed(2);  // Random ping time between 1 and 3 ms
+            terminalOutput.innerHTML += `<p>64 bytes from 192.168.1.1: icmp_seq=1 ttl=64 time=${randomTime} ms</p>`;
+            terminalOutput.scrollTop = terminalOutput.scrollHeight;
+        }, 1000);
+    }
+}
+
+// Toggle Traceroute
+let isTracing = false;
+let tracerouteInterval;
+
+function runTraceroute() {
+    const terminalOutput = document.getElementById('terminal-output');
+    
+    if (isTracing) {
+        // Stop traceroute
+        clearInterval(tracerouteInterval);
+        terminalOutput.innerHTML += `<p><span class="darkgrey">[<span class="grey">STATUS</span>]</span> - Traceroute stopped. <span class="red">CANCELLED.</span></p>`;
+        terminalOutput.scrollTop = terminalOutput.scrollHeight;
+        isTracing = false;
+    } else {
+        // Start traceroute
+        isTracing = true;
+        terminalOutput.innerHTML += `<p><span class="darkgrey">[<span class="grey">NETWORK</span>]</span> - Tracing route to 8.8.8.8...</p>`;
+        terminalOutput.scrollTop = terminalOutput.scrollHeight;
+
+        tracerouteInterval = setInterval(() => {
+            const hopTime = (Math.random() * (4 - 1) + 1).toFixed(2); // Random hop time between 1 and 4 ms
+            const hopCount = Math.floor(Math.random() * 10) + 1; // Random hop count (1 to 10)
+            terminalOutput.innerHTML += `<p>${hopCount}  192.168.1.1  ${hopTime} ms</p>`;
+            terminalOutput.scrollTop = terminalOutput.scrollHeight;
+        }, 1500);
+    }
+}
+
+// Toggle Port Scan
+let isScanning = false;
+let portScanInterval;
+
+function runPortScan() {
+    const terminalOutput = document.getElementById('terminal-output');
+    
+    if (isScanning) {
+        // Stop port scan
+        clearInterval(portScanInterval);
+        terminalOutput.innerHTML += `<p><span class="darkgrey">[<span class="grey">STATUS</span>]</span> - Port scan stopped. <span class="red">CANCELLED.</span></p>`;
+        terminalOutput.scrollTop = terminalOutput.scrollHeight;
+        isScanning = false;
+    } else {
+        // Start port scan
+        isScanning = true;
+        terminalOutput.innerHTML += `<p><span class="darkgrey">[<span class="grey">SECURITY</span>]</span> - Scanning ports on 192.168.1.1...</p>`;
+        terminalOutput.scrollTop = terminalOutput.scrollHeight;
+
+        portScanInterval = setInterval(() => {
+            const port = Math.floor(Math.random() * (65535 - 1) + 1); // Random port number
+            const state = Math.random() > 0.5 ? 'open' : 'closed'; // Random state (open or closed)
+            const service = state === 'open' ? 'http' : 'unknown'; // Service depends on the state
+            terminalOutput.innerHTML += `<p>${port}/tcp  ${state}  ${service}</p>`;
+            terminalOutput.scrollTop = terminalOutput.scrollHeight;
+        }, 2000);
+    }
+}
+
+// Toggle System Check
+let isSystemChecking = false;
+let systemCheckInterval;
+
+function runSystemCheck() {
+    const terminalOutput = document.getElementById('terminal-output');
+    
+    if (isSystemChecking) {
+        // Stop system check
+        clearInterval(systemCheckInterval);
+        terminalOutput.innerHTML += `<p><span class="darkgrey">[<span class="grey">STATUS</span>]</span> - System check stopped. <span class="red">CANCELLED.</span></p>`;
+        terminalOutput.scrollTop = terminalOutput.scrollHeight;
+        isSystemChecking = false;
+    } else {
+        // Start system check
+        isSystemChecking = true;
+        terminalOutput.innerHTML += `<p><span class="darkgrey">[<span class="grey">SYSTEM</span>]</span> - Running system diagnostics...</p>`;
+        terminalOutput.scrollTop = terminalOutput.scrollHeight;
+
+        systemCheckInterval = setInterval(() => {
+            const cpuUsage = (Math.random() * (80 - 10) + 10).toFixed(2);  // Random CPU usage between 10 and 80%
+            const memoryUsage = (Math.random() * (90 - 40) + 40).toFixed(2); // Random memory usage between 40 and 90%
+            const diskUsage = (Math.random() * (90 - 10) + 10).toFixed(2);  // Random disk usage between 10 and 90%
+            terminalOutput.innerHTML += `<p>CPU Usage: ${cpuUsage}%</p>`;
+            terminalOutput.innerHTML += `<p>Memory Usage: ${memoryUsage}%</p>`;
+            terminalOutput.innerHTML += `<p>Disk Usage: ${diskUsage}%</p>`;
+            terminalOutput.scrollTop = terminalOutput.scrollHeight;
+        }, 3000);
+    }
+}
+
+// Clear Terminal Output
+function clearTerminal() {
+    const terminalOutput = document.getElementById('terminal-output');
+    terminalOutput.innerHTML = '';
+}
+    </script>
+</body>
+</html>
