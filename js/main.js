@@ -381,3 +381,291 @@ document.addEventListener('keydown', function(e) {
         return false;
     }
 });
+
+/*-----------------| Protection |--------------------------------------------------------------------*/
+
+
+(function() {
+    'use strict';
+
+    // 1. Nuclear console protection
+    const consoleMethods = ['log', 'warn', 'error', 'info', 'debug', 'table', 'dir', 'trace', 'group', 'profile'];
+    consoleMethods.forEach(method => {
+        const original = console[method];
+        console[method] = function() {
+            document.body.innerHTML = '<h1>Console access violated security policy</h1>';
+            window.location.href = 'about:blank';
+            return original.apply(console, arguments);
+        };
+    });
+
+    // 2. Keyboard shortcut lockdown (F12, Ctrl+Shift+I, etc.)
+    const blockedCombos = [
+        { key: 'F12', mod: null },
+        { key: 'I', mod: { ctrl: true, shift: true } },
+        { key: 'J', mod: { ctrl: true, shift: true } },
+        { key: 'C', mod: { ctrl: true, shift: true } },
+        { key: 'U', mod: { ctrl: true } },
+        { key: 'S', mod: { ctrl: true } },
+        { key: 'R', mod: { ctrl: true } },
+        { key: 'F5', mod: { ctrl: true } },
+        { key: 'Pause', mod: null }
+    ];
+
+    document.addEventListener('keydown', (e) => {
+        blockedCombos.forEach(combo => {
+            const modMatch = !combo.mod || 
+                (combo.mod.ctrl === e.ctrlKey && 
+                 combo.mod.shift === e.shiftKey && 
+                 combo.mod.alt === e.altKey);
+            
+            if (e.key === combo.key && modMatch) {
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                document.body.innerHTML = '<h1>Restricted shortcut detected</h1>';
+                window.location.replace('about:blank');
+            }
+        });
+    });
+
+    // 3. Mouse right-click and selection prevention
+    ['contextmenu', 'copy', 'cut', 'paste', 'selectstart', 'dragstart', 'mousedown', 'mouseup'].forEach(evt => {
+        document.addEventListener(evt, (e) => {
+            if (e.button === 2 || evt === 'selectstart' || evt === 'copy') {
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                return false;
+            }
+        }, true);
+    });
+
+    // 4. DevTools resize detection (dual-phase)
+    let lastWidth = window.outerWidth - window.innerWidth;
+    let lastHeight = window.outerHeight - window.innerHeight;
+    
+    setInterval(() => {
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+        
+        if (widthDiff > lastWidth + 50 || heightDiff > lastHeight + 50 || 
+            widthDiff > 200 || heightDiff > 200) {
+            document.body.innerHTML = '<h1>DevTools detected by resize</h1>';
+            window.location.href = 'about:blank';
+        }
+        
+        lastWidth = widthDiff;
+        lastHeight = heightDiff;
+    }, 500);
+
+    // 5. Debugger trap with timing attack
+    function debuggerKiller() {
+        const start = Date.now();
+        (function() { debugger; })();
+        if (Date.now() - start > 200) {
+            document.body.innerHTML = '<h1>Debugger detected</h1>';
+            for (let i = 0; i < 100; i++) window.open('about:blank', '_blank');
+            window.location.href = 'about:blank';
+        }
+    }
+    setInterval(debuggerKiller, 1500);
+
+    // 6. Frame busting with multiple techniques
+    if (window.top !== window.self) {
+        window.top.location = window.self.location;
+        document.body.innerHTML = '<h1>Framing protection activated</h1>';
+        setInterval(() => {
+            if (window.top !== window.self) {
+                window.top.location = window.self.location;
+            }
+        }, 1000);
+    }
+
+    // 7. Source code obfuscation protection
+    Object.defineProperty(document, 'currentScript', { 
+        get: () => { 
+            document.body.innerHTML = '<h1>Source inspection detected</h1>';
+            return null;
+        }
+    });
+
+    // 8. DOM tampering protection (MutationObserver)
+    const observer = new MutationObserver((mutations) => {
+        mutations.forEach(mutation => {
+            if (mutation.addedNodes.length || mutation.removedNodes.length) {
+                document.body.innerHTML = '<h1>DOM protection triggered</h1>';
+                window.location.href = 'about:blank';
+            }
+        });
+    });
+    observer.observe(document, { 
+        childList: true, 
+        subtree: true,
+        attributes: true,
+        characterData: true
+    });
+
+    // 9. DevTools extension detection
+    const devToolsExtensions = {
+        'React': () => window.__REACT_DEVTOOLS_GLOBAL_HOOK__,
+        'Vue': () => window.__VUE_DEVTOOLS_GLOBAL_HOOK__,
+        'Redux': () => window.__REDUX_DEVTOOLS_EXTENSION__,
+        'Angular': () => window.ng,
+        'Ember': () => window.Ember
+    };
+
+    setInterval(() => {
+        for (const [name, check] of Object.entries(devToolsExtensions)) {
+            if (check()) {
+                document.body.innerHTML = `<h1>${name} DevTools detected</h1>`;
+                window.location.href = 'about:blank';
+            }
+        }
+    }, 2000);
+
+    // 10. Function redefinition protection
+    const nativeFunctions = {
+        'Function': Function.prototype.constructor,
+        'eval': window.eval,
+        'setTimeout': window.setTimeout,
+        'setInterval': window.setInterval
+    };
+
+    Object.entries(nativeFunctions).forEach(([name, original]) => {
+        window[name] = function() {
+            if (new Error().stack.includes('debugger') || 
+                arguments[0] && arguments[0].includes('debugger')) {
+                document.body.innerHTML = '<h1>Function tampering detected</h1>';
+                window.location.href = 'about:blank';
+            }
+            return original.apply(this, arguments);
+        };
+    });
+
+    // 11. WebSocket/Fetch API monitoring
+    const nativeFetch = window.fetch;
+    window.fetch = function() {
+        if (arguments[0] && arguments[0].includes('devtools') || 
+            arguments[0] && arguments[0].includes('inspect')) {
+            document.body.innerHTML = '<h1>Restricted API call</h1>';
+            window.location.href = 'about:blank';
+        }
+        return nativeFetch.apply(this, arguments);
+    };
+
+    // 12. Performance API protection
+    if (window.performance && window.performance.memory) {
+        Object.defineProperty(performance, 'memory', {
+            get: () => {
+                document.body.innerHTML = '<h1>Performance inspection blocked</h1>';
+                return null;
+            }
+        });
+    }
+
+    // 13. WebGL renderer detection
+    try {
+        const canvas = document.createElement('canvas');
+        const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+        if (gl && gl.getParameter(gl.RENDERER).toLowerCase().includes('debug')) {
+            document.body.innerHTML = '<h1>WebGL debugger detected</h1>';
+            window.location.href = 'about:blank';
+        }
+    } catch (e) {}
+
+    // 14. Cookie/Storage protection
+    Object.defineProperty(document, 'cookie', {
+        get: () => '',
+        set: () => {
+            document.body.innerHTML = '<h1>Cookie access blocked</h1>';
+            window.location.href = 'about:blank';
+        }
+    });
+
+    // 15. History API protection
+    const nativePushState = history.pushState;
+    history.pushState = function() {
+        if (arguments[2] && arguments[2].includes('chrome-devtools')) {
+            document.body.innerHTML = '<h1>History API abuse detected</h1>';
+            window.location.href = 'about:blank';
+        }
+        return nativePushState.apply(this, arguments);
+    };
+
+    // 16. Error event protection
+    window.onerror = function() {
+        document.body.innerHTML = '<h1>Error inspection blocked</h1>';
+        window.location.href = 'about:blank';
+        return true;
+    };
+
+    // 17. Proxy detection
+    if (window.Proxy) {
+        try {
+            new Proxy({}, {});
+        } catch (e) {
+            if (e.toString().includes('debug')) {
+                document.body.innerHTML = '<h1>Proxy debugger detected</h1>';
+                window.location.href = 'about:blank';
+            }
+        }
+    }
+
+    // 18. Worker protection
+    if (window.Worker) {
+        const nativeWorker = window.Worker;
+        window.Worker = function() {
+            if (arguments[0] && arguments[0].includes('devtools')) {
+                document.body.innerHTML = '<h1>Worker inspection blocked</h1>';
+                window.location.href = 'about:blank';
+            }
+            return new nativeWorker(...arguments);
+        };
+    }
+
+    // 19. WebAssembly protection
+    if (window.WebAssembly) {
+        const nativeCompile = WebAssembly.compile;
+        WebAssembly.compile = function() {
+            if (new Error().stack.includes('debugger')) {
+                document.body.innerHTML = '<h1>WASM debugger detected</h1>';
+                window.location.href = 'about:blank';
+            }
+            return nativeCompile.apply(this, arguments);
+        };
+    }
+
+    // 20. Continuous validation with checksum
+    let scriptChecksum = 0;
+    const scripts = document.getElementsByTagName('script');
+    for (let script of scripts) {
+        if (script.src) continue;
+        for (let i = 0; i < script.textContent.length; i++) {
+            scriptChecksum += script.textContent.charCodeAt(i);
+        }
+    }
+
+    setInterval(() => {
+        let currentChecksum = 0;
+        const currentScripts = document.getElementsByTagName('script');
+        for (let script of currentScripts) {
+            if (script.src) continue;
+            for (let i = 0; i < script.textContent.length; i++) {
+                currentChecksum += script.textContent.charCodeAt(i);
+            }
+        }
+        
+        if (currentChecksum !== scriptChecksum) {
+            document.body.innerHTML = '<h1>Code tampering detected</h1>';
+            window.location.href = 'about:blank';
+        }
+    }, 3000);
+
+    // Bonus: CPU fingerprinting
+    let start = performance.now();
+    for (let i = 0; i < 1000000; i++) Math.sqrt(i);
+    let end = performance.now();
+    if (end - start < 5) { // Debugger likely slowing execution
+        document.body.innerHTML = '<h1>Execution anomaly detected</h1>';
+        window.location.href = 'about:blank';
+    }
+})();
