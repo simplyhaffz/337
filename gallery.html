@@ -327,7 +327,7 @@
         });
     </script>
 <script>
-    // Developer tools detection
+// Developer tools detection
 function detectDevTools() {
     // Method 1: Check window size difference
     const widthThreshold = window.outerWidth - window.innerWidth > 160;
@@ -358,13 +358,10 @@ function detectDevTools() {
 // Run devtools detection periodically
 setInterval(detectDevTools, 1000);
 
-// Disable right-click and show a subtle alert
+// Disable right-click
 document.addEventListener('contextmenu', function(e) {
-    e.preventDefault();
-    // You can disable the alert if you want to avoid interruption
-    console.log('Right-click is disabled');  // This will log a message in the console instead of showing an alert
-    return false; // Prevent the context menu from appearing
-}, { once: true });
+    e.preventDefault(); // Prevent the context menu from showing
+}, false);
 
 // Disable keyboard shortcuts (F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C, Ctrl+U)
 document.addEventListener('keydown', function(e) {
@@ -378,7 +375,7 @@ document.addEventListener('keydown', function(e) {
         alert('Developer tools are disabled'); // You can customize or remove the alert here
         return false;
     }
-}, { once: true });
+}, false);
 
 </script>
     
