@@ -326,5 +326,61 @@
             }
         });
     </script>
+<script>
+    // Developer tools detection
+function detectDevTools() {
+    // Method 1: Check window size difference
+    const widthThreshold = window.outerWidth - window.innerWidth > 160;
+    const heightThreshold = window.outerHeight - window.innerHeight > 160;
+    
+    // Method 2: Check for devtools function toString
+    const devtools = /./;
+    devtools.toString = function() {
+        // Hide page content when devtools are opened
+        document.body.innerHTML = '<h1 style="color:red;text-align:center;">Access Denied</h1>';
+        window.location.href = 'about:blank'; // Redirect to a blank page
+        return '';
+    };
+    
+    // Method 3: Debugger statement
+    setInterval(function() {
+        (function() {
+            return false;
+        }['constructor']('debugger')());
+    }, 5000);
+    
+    if (widthThreshold || heightThreshold) {
+        document.body.innerHTML = '<h1 style="color:red;text-align:center;">Access Denied</h1>';
+        window.location.href = 'about:blank'; // Redirect to a blank page
+    }
+}
+
+// Run devtools detection periodically
+setInterval(detectDevTools, 1000);
+
+// Disable right-click and show a subtle alert
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    // You can disable the alert if you want to avoid interruption
+    console.log('Right-click is disabled');  // This will log a message in the console instead of showing an alert
+    return false; // Prevent the context menu from appearing
+}, { once: true });
+
+// Disable keyboard shortcuts (F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C, Ctrl+U)
+document.addEventListener('keydown', function(e) {
+    // Check for common developer tools shortcuts
+    if (e.key === 'F12' || 
+        (e.ctrlKey && e.shiftKey && e.key === 'I') || 
+        (e.ctrlKey && e.shiftKey && e.key === 'J') || 
+        (e.ctrlKey && e.shiftKey && e.key === 'C') || 
+        (e.ctrlKey && e.key === 'U')) {
+        e.preventDefault();
+        alert('Developer tools are disabled'); // You can customize or remove the alert here
+        return false;
+    }
+}, { once: true });
+
+</script>
+    
 </body>
 </html>
