@@ -45,7 +45,7 @@ const LOGS = {
             date: "09/29",
             content: 
                 ` <video id="bio_player" controls>
-                    <source src="videoX/bury.mp4" type="video/mp4">
+                    <source src="videoX/Bury.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                   </video> `
         },
