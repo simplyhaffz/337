@@ -383,3 +383,66 @@ document.addEventListener('keydown', function(e) {
 });
 
 
+/*-----------------| Landscape |--------------------------------------------------------------------*/
+
+function isMobileDevice() {
+  return /Mobi|Android/i.test(navigator.userAgent) || window.innerWidth <= 768;
+}
+
+function showRotateWarning() {
+  const warning = document.getElementById('rotateWarning');
+  const isPortrait = window.innerHeight > window.innerWidth;
+
+  if (isMobileDevice() && isPortrait) {
+    if (!warning) {
+      const overlay = document.createElement('div');
+      overlay.id = 'rotateWarning';
+      overlay.style.cssText = `
+        position: fixed;
+        top: 0; left: 0;
+        width: 100vw; height: 100vh;
+        background: black;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        text-align: center;
+        padding: 20px;
+      `;
+      overlay.innerHTML = `
+        <p style="font-size: 1.2rem;">Please rotate your device to landscape for the best experience.</p>
+        <button id="rotateBtn" style="margin-top: 20px; padding: 10px 20px; font-size: 1rem; border: none; border-radius: 6px; background: white; color: black; cursor: pointer;">Go Fullscreen</button>
+      `;
+      document.body.appendChild(overlay);
+
+      document.getElementById('rotateBtn').addEventListener('click', async () => {
+        try {
+          await document.documentElement.requestFullscreen();
+          await screen.orientation.lock('landscape');
+          checkOrientationAfterDelay();
+        } catch (e) {
+          alert('Fullscreen or orientation lock not supported.');
+        }
+      });
+    } else {
+      warning.style.display = 'flex';
+    }
+  } else {
+    if (warning) warning.style.display = 'none';
+  }
+}
+
+function checkOrientationAfterDelay() {
+  setTimeout(() => {
+    const warning = document.getElementById('rotateWarning');
+    if (window.innerWidth > window.innerHeight && warning) {
+      warning.style.display = 'none';
+    }
+  }, 500); // Small delay to wait for rotation
+}
+
+window.addEventListener('load', showRotateWarning);
+window.addEventListener('resize', showRotateWarning);
+window.addEventListener('orientationchange', showRotateWarning);
